@@ -1,0 +1,17 @@
+# Ghost runtime data
+ghost-project/content/data/
+ghost-project/content/logs/
+
+# Ghost built-in theme symlinks (created by Docker)
+ghost-project/content/themes/casper
+ghost-project/content/themes/source
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Ghost dev directory (empty)
+ghost-dev/
