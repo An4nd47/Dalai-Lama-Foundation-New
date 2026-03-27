@@ -1,58 +1,36 @@
 {{!< default}}
 
-{{!-- Hero Section — uses site cover image and description from Ghost Admin --}}
-<section class="hero-section" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{@site.cover_image}}')"{{/if}}>
+<section class="hero-section" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{@site.cover_image}}')"{{/if}}>
     <div class="hero-content">
-        <h1 class="hero-heading">{{@site.description}}</h1>
+        <h1 class="hero-heading">Empowering Tribal & Rural Communities Through Education, Nutrition & Livelihoods</h1>
         <div class="hero-cta">
-            {{#get "pages" filter="tag:partner" limit="1"}}
-                {{#foreach pages}}
-                    <a href="{{url}}" class="btn btn-primary">Partner With Us</a>
-                {{/foreach}}
-            {{/get}}
-            {{#get "pages" filter="tag:explore" limit="1"}}
-                {{#foreach pages}}
-                    <a href="{{url}}" class="btn btn-secondary">Explore Our Work</a>
-                {{/foreach}}
-            {{/get}}
+            <a href="#partner" class="btn btn-primary">Partner With Us</a>
+            <a href="#work" class="btn btn-secondary">Explore Our Work</a>
         </div>
     </div>
 </section>
 
-{{!-- Featured Posts Section --}}
-{{#get "posts" filter="featured:true" limit="4" include="tags,authors"}}
-    {{#if posts}}
-        <section class="featured-section">
-            <div class="container">
-                <h2 class="section-title">Featured</h2>
-                <div class="featured-grid">
-                    {{#foreach posts}}
-                        {{> post-card}}
-                    {{/foreach}}
-                </div>
-            </div>
-        </section>
-    {{/if}}
-{{/get}}
+{{> stats-section}}
 
-{{!-- Recent Posts Section — main post loop --}}
-<section class="posts-section">
+{{> focus-areas}}
+
+{{> programs-grid}}
+
+{{!-- Search Bar (UI Only) --}}
+<section class="search-section">
     <div class="container">
-        <h2 class="section-title">Recent Posts</h2>
-
-        {{#if posts}}
-            <div class="posts-grid">
-                {{#foreach posts}}
-                    {{> post-card}}
-                {{/foreach}}
+        <div class="search-bar-wrap">
+            <div class="search-input-group">
+                <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </span>
+                <input type="text" placeholder="Search stories, programs, & impact..." class="search-input" readonly>
             </div>
-        {{else}}
-            <div class="no-posts">
-                <p>No posts published yet. Content will appear here once posts are created in the Ghost Admin panel.</p>
-            </div>
-        {{/if}}
+            <button class="btn btn-small btn-secondary">Learn More &blacktriangledown;</button>
+        </div>
     </div>
 </section>
 
-{{!-- Pagination --}}
-{{> pagination}}
+{{> stories-split}}
+
+{{> partner-logos}}

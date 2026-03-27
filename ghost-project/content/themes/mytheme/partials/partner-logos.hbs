@@ -1,0 +1,19 @@
+<section class="partner-logos-section">
+    <div class="container">
+        <div class="partner-logos-grid">
+            {{!-- This could be dynamic via a specific tag, but for now we'll provide a grid structure --}}
+            {{#get "tags" filter="slug:partner-logo" limit="6" include="feature_image"}}
+                {{#foreach tags}}
+                    <div class="partner-logo">
+                        <img src="{{img_url feature_image}}" alt="{{name}}">
+                    </div>
+                {{/foreach}}
+            {{else}}
+                {{!-- Fallback for demonstration --}}
+                <div class="placeholder-logos">
+                    <span>Partner Logos will appear here (Tag: <code>partner-logo</code>)</span>
+                </div>
+            {{/get}}
+        </div>
+    </div>
+</section>

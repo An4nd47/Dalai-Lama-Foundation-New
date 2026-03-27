@@ -1,0 +1,43 @@
+<section class="stories-split-section">
+    <div class="container">
+        <div class="stories-split-grid">
+            
+            {{!-- Left: Latest Stories List --}}
+            <div class="stories-list">
+                <h2 class="section-title">Latest Stories</h2>
+                
+                {{#get "posts" limit="2" include="tags,authors"}}
+                <div class="stories-stack">
+                    {{#foreach posts}}
+                    <a href="{{url}}" class="story-item">
+                        <div class="story-image">
+                            {{#if feature_image}}
+                                <img src="{{img_url feature_image size="xs"}}" alt="{{title}}">
+                            {{/if}}
+                        </div>
+                        <div class="story-content">
+                            <span class="story-meta">{{tags limit="1"}}</span>
+                            <h3 class="story-title">{{title}}</h3>
+                            <p class="story-excerpt">{{excerpt words="10"}}</p>
+                            <span class="story-date">{{date published_at timeago="true"}}</span>
+                        </div>
+                    </a>
+                    {{/foreach}}
+                </div>
+                {{/get}}
+            </div>
+
+            {{!-- Right: Latest Stories Featured Card --}}
+            <div class="stories-featured">
+                <div class="featured-card-inner" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{@site.cover_image}}')"{{/if}}>
+                    <div class="featured-card-content">
+                        <h2 class="featured-card-title">Partner With Us</h2>
+                        <p class="featured-card-text">Looking to create measurable CSR impact? Partner with us to uplift tribal and rural communities through sustainable initiatives.</p>
+                        <a href="#partner" class="btn btn-primary">Become a Partner</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
