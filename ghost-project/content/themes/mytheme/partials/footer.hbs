@@ -1,0 +1,24 @@
+<footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <a href="{{@site.url}}" class="footer-logo-link">
+                {{#if @site.logo}}
+                    <img class="footer-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+                {{else}}
+                    <span class="footer-title">{{@site.title}}</span>
+                {{/if}}
+            </a>
+            {{#if @site.description}}
+                <p class="footer-description">{{@site.description}}</p>
+            {{/if}}
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+            {{navigation type="secondary"}}
+        </nav>
+
+        <div class="footer-copyright">
+            <p>&copy; {{date format="YYYY"}} {{@site.title}}. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>

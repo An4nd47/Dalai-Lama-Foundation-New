@@ -1,0 +1,21 @@
+<header class="site-header" role="banner">
+    <div class="container nav-container">
+        <a href="{{@site.url}}" class="site-logo-link" aria-label="{{@site.title}} — Home">
+            {{#if @site.logo}}
+                <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+            {{else}}
+                <span class="site-title">{{@site.title}}</span>
+            {{/if}}
+        </a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+            {{navigation}}
+        </nav>
+    </div>
+</header>

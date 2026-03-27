@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  ghost-test:
+    image: ghost:latest
+    ports:
+      - "3001:2368"
+    environment:
+      # Use SQLite for a clean start
+      database__client: sqlite3
+      # We just let it use the default internal path
+      url: http://localhost:3001
+      NODE_ENV: development
+    volumes:
+      # Use a NAMED Docker volume for content (MUCH more stable on Windows for SQLite)
+      - ghost_test_content:/var/lib/ghost/content
+      # Keep the theme bind-mount so we can test the local files
+      - ./content/themes/mytheme:/var/lib/ghost/content/themes/mytheme
+
+volumes:
+  ghost_test_content:

@@ -1,0 +1,19 @@
+{{#if pagination}}
+<nav class="pagination" role="navigation" aria-label="Pagination">
+    {{#if pagination.prev}}
+        <a class="pagination-btn pagination-prev" href="{{pagination.prev}}" aria-label="Previous page">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Newer Posts</span>
+        </a>
+    {{/if}}
+
+    <span class="pagination-info">Page {{pagination.page}} of {{pagination.pages}}</span>
+
+    {{#if pagination.next}}
+        <a class="pagination-btn pagination-next" href="{{pagination.next}}" aria-label="Next page">
+            <span>Older Posts</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+    {{/if}}
+</nav>
+{{/if}}

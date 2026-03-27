@@ -1,0 +1,31 @@
+{{!< default}}
+
+<header class="tag-header" {{#if tag.feature_image}}style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{tag.feature_image}}')"{{/if}}>
+    <div class="container">
+        <h1 class="tag-name">{{tag.name}}</h1>
+        {{#if tag.description}}
+            <p class="tag-description">{{tag.description}}</p>
+        {{/if}}
+        <span class="tag-post-count">
+            {{plural tag.count.posts empty="No posts" singular="% post" plural="% posts"}}
+        </span>
+    </div>
+</header>
+
+<section class="posts-section">
+    <div class="container">
+        {{#if posts}}
+            <div class="posts-grid">
+                {{#foreach posts}}
+                    {{> post-card}}
+                {{/foreach}}
+            </div>
+        {{else}}
+            <div class="no-posts">
+                <p>No posts with this tag yet.</p>
+            </div>
+        {{/if}}
+    </div>
+</section>
+
+{{> pagination}}

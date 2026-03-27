@@ -1,163 +1,58 @@
-{{!< default}} <section class="hero-section">
+{{!< default}}
+
+{{!-- Hero Section — uses site cover image and description from Ghost Admin --}}
+<section class="hero-section" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{@site.cover_image}}')"{{/if}}>
     <div class="hero-content">
-        <h1>Empowering Tribal & Rural Communities<br>Through Education, Nutrition & Livelihoods</h1>
+        <h1 class="hero-heading">{{@site.description}}</h1>
         <div class="hero-cta">
-            <a href="/coming-soon" class="btn btn-partner">Partner With Us</a>
-            <a href="/coming-soon" class="btn btn-explore">Explore Our Work</a>
+            {{#get "pages" filter="tag:partner" limit="1"}}
+                {{#foreach pages}}
+                    <a href="{{url}}" class="btn btn-primary">Partner With Us</a>
+                {{/foreach}}
+            {{/get}}
+            {{#get "pages" filter="tag:explore" limit="1"}}
+                {{#foreach pages}}
+                    <a href="{{url}}" class="btn btn-secondary">Explore Our Work</a>
+                {{/foreach}}
+            {{/get}}
         </div>
     </div>
-    </section>
+</section>
 
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">5000+</span>
-                    <span class="stat-label">Lives Impacted</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">1500+</span>
-                    <span class="stat-label">Children Supported</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">800+</span>
-                    <span class="stat-label">Women Empowered</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100,000+</span>
-                    <span class="stat-label">Meals Served Annually</span>
+{{!-- Featured Posts Section --}}
+{{#get "posts" filter="featured:true" limit="4" include="tags,authors"}}
+    {{#if posts}}
+        <section class="featured-section">
+            <div class="container">
+                <h2 class="section-title">Featured</h2>
+                <div class="featured-grid">
+                    {{#foreach posts}}
+                        {{> post-card}}
+                    {{/foreach}}
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {{/if}}
+{{/get}}
 
-    <section class="focus-areas-section">
-        <div class="container">
-            <h2 class="section-title">Our Focus Areas</h2>
-            <div class="focus-grid">
-                <a href="/coming-soon" class="focus-box">
-                    <div class="focus-icon">
-                        <div class="placeholder-icon blue"></div>
-                    </div>
-                    <h3>Education</h3>
-                    <p>Community agendas focused on high quality education outcomes spanning from early childhood to
-                        higher secondary education.</p>
-                </a>
-                <a href="/coming-soon" class="focus-box">
-                    <div class="focus-icon">
-                        <div class="placeholder-icon orange"></div>
-                    </div>
-                    <h3>Nutrition & Food Security</h3>
-                    <p>Ensuring nutritional security for tribal and rural communities with focus on hunger and
-                        malnutrition.</p>
-                </a>
-                <a href="/coming-soon" class="focus-box">
-                    <div class="focus-icon">
-                        <div class="placeholder-icon pink"></div>
-                    </div>
-                    <h3>Women Empowerment</h3>
-                    <p>Building skills and livelihood opportunities for women through sustainable interventions.</p>
-                </a>
-                <a href="/coming-soon" class="focus-box">
-                    <div class="focus-icon">
-                        <div class="placeholder-icon green"></div>
-                    </div>
-                    <h3>Youth Development</h3>
-                    <p>Supporting youth with skills and opportunities for holistic growth and development.</p>
-                </a>
+{{!-- Recent Posts Section — main post loop --}}
+<section class="posts-section">
+    <div class="container">
+        <h2 class="section-title">Recent Posts</h2>
+
+        {{#if posts}}
+            <div class="posts-grid">
+                {{#foreach posts}}
+                    {{> post-card}}
+                {{/foreach}}
             </div>
-        </div>
-    </section>
-
-    <section class="programs-section">
-        <div class="container">
-            <h2 class="section-title">Programs & Initiatives</h2>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="card-img placeholder-img"></div>
-                    <div class="card-content">
-                        <h3>Shiv Bhojan Nutrition Program</h3>
-                        <p>Providing Affordable Meals to Daily Wage Workers.</p>
-                        <div class="dropdown">
-                            <button class="dropbtn">Learn More <span>▼</span></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="program-card">
-                    <div class="card-img placeholder-img"></div>
-                    <div class="card-content">
-                        <h3>Education Support Initiative</h3>
-                        <p>Helping Tribal Students Access Quality Education.</p>
-                        <div class="dropdown">
-                            <button class="dropbtn">Learn More <span>▼</span></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="program-card">
-                    <div class="card-img placeholder-img"></div>
-                    <div class="card-content">
-                        <h3>Women Empowerment</h3>
-                        <p>Building Skills and Livelihood Opportunities for Women.</p>
-                        <a href="/coming-soon" class="learn-more-link">Learn more →</a>
-                    </div>
-                </div>
+        {{else}}
+            <div class="no-posts">
+                <p>No posts published yet. Content will appear here once posts are created in the Ghost Admin panel.</p>
             </div>
-        </div>
-    </section>
+        {{/if}}
+    </div>
+</section>
 
-    <section class="search-section">
-        <div class="container">
-            <div class="search-bar">
-                <span class="search-icon">🔍</span>
-                <input type="text" placeholder="Search stories, programs, & impact">
-                <button class="search-btn">Learn More <span>▼</span></button>
-            </div>
-        </div>
-    </section>
-
-    <section class="partner-stories-section">
-        <div class="container">
-            <div class="partner-stories-grid">
-                <div class="stories-list">
-                    <h2 class="section-title">Partner With Us</h2>
-                    <div class="story-item">
-                        <div class="story-img-small placeholder-img"></div>
-                        <div class="story-content-small">
-                            <span class="tag">Education</span>
-                            <h3>Health Awareness Camp</h3>
-                            <p>Community health camp promoting wellness and hygiene in Nandurbar.</p>
-                            <span class="date">0 Days ago</span>
-                        </div>
-                    </div>
-                    <div class="story-item">
-                        <div class="story-img-small placeholder-img"></div>
-                        <div class="story-content-small">
-                            <span class="tag">Education</span>
-                            <h3>School Children Receive New Learning Materials</h3>
-                            <p>Distribution of new health and learning materials to tribal students in Nandurbar.</p>
-                            <span class="date">1 Week ago</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="latest-stories-highlight">
-                    <div class="highlight-content">
-                        <h2>Latest Stories</h2>
-                        <p class="highlight-intro">Looking to create measurable CSR <strong>impact?</strong></p>
-                        <p>Partner with us to uplift tribal and rural communities through sustainable initiatives.</p>
-                        <a href="/coming-soon" class="btn btn-primary-alt">Become a Partner</a>
-                    </div>
-                    <div class="highlight-bg-placeholder"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="footer-logos">
-        <div class="container logo-strip">
-            <img src="https://via.placeholder.com/150x50?text=Hindustan+Zinc" alt="Hindustan Zinc">
-            <img src="https://via.placeholder.com/150x50?text=Bank+of+India" alt="Bank of India">
-            <img src="https://via.placeholder.com/150x50?text=CIG" alt="CIG">
-            <img src="https://via.placeholder.com/150x50?text=CSR" alt="CSR">
-            <img src="https://via.placeholder.com/150x50?text=LIC" alt="LIC">
-        </div>
-    </section>
+{{!-- Pagination --}}
+{{> pagination}}

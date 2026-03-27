@@ -1,37 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{@site.locale}}">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{meta_title}}</title>
+
     {{ghost_head}}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset "css/style.css"}}">
+
+    <link rel="stylesheet" href="{{asset "css/style.css"}}" />
 </head>
-<body>
+<body class="{{body_class}}">
 
-<header class="navbar">
-    <div class="container nav-container">
-        <h2 class="logo">DALAI LAMA FOUNDATION</h2>
-        <nav>
-            <a href="/">HOME</a>
-            <a href="/about">ABOUT</a>
-            <a href="/coming-soon">PROGRAMS</a>
-            <a href="/coming-soon">CONTACT</a>
-        </nav>
-    </div>
-</header>
+    {{> header}}
 
-<main>
-    {{{body}}}
-</main>
+    <main class="site-main" role="main">
+        {{{body}}}
+    </main>
 
-<footer class="footer">
-    <div class="container">
-        <p>© 2024 Dalai Lama Foundation. All Rights Reserved.</p>
-    </div>
-</footer>
+    {{> footer}}
 
-{{ghost_foot}}
+    <script src="{{asset "js/main.js"}}"></script>
+
+    {{ghost_foot}}
 </body>
 </html>

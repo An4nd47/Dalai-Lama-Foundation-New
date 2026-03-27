@@ -1,0 +1,37 @@
+<article class="post-card {{post_class}}">
+    <a href="{{url}}" class="post-card-link" aria-label="{{title}}">
+        {{#if feature_image}}
+            <figure class="post-card-image-wrap">
+                <img class="post-card-image" src="{{feature_image}}" alt="{{title}}" loading="lazy" />
+            </figure>
+        {{else}}
+            <figure class="post-card-image-wrap post-card-no-image">
+                <div class="post-card-placeholder-img"></div>
+            </figure>
+        {{/if}}
+
+        <div class="post-card-content">
+            {{#if primary_tag}}
+                <span class="post-card-tag">{{primary_tag.name}}</span>
+            {{/if}}
+
+            <h3 class="post-card-title">{{title}}</h3>
+
+            {{#if custom_excerpt}}
+                <p class="post-card-excerpt">{{custom_excerpt}}</p>
+            {{else if excerpt}}
+                <p class="post-card-excerpt">{{excerpt words="25"}}</p>
+            {{/if}}
+
+            <div class="post-card-meta">
+                {{#if primary_author}}
+                    <span class="post-card-author">{{primary_author.name}}</span>
+                {{/if}}
+                <time class="post-card-date" datetime="{{date format="YYYY-MM-DD"}}">
+                    {{date format="DD MMM YYYY"}}
+                </time>
+                <span class="post-card-reading-time">{{reading_time}}</span>
+            </div>
+        </div>
+    </a>
+</article>

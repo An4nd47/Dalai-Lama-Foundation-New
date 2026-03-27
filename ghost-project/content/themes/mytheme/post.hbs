@@ -1,14 +1,54 @@
 {{!< default}}
 
-<section class="section">
-    <h1>{{title}}</h1>
-    <p><em>{{date}}</em></p>
+{{#post}}
+<article class="post-full {{post_class}}">
+    <header class="post-full-header">
+        <div class="container">
+            {{#if primary_tag}}
+                <a class="post-full-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+            {{/if}}
+
+            <h1 class="post-full-title">{{title}}</h1>
+
+            <div class="post-full-meta">
+                {{#if primary_author}}
+                    <div class="post-full-author">
+                        {{#if primary_author.profile_image}}
+                            <img class="author-avatar" src="{{primary_author.profile_image}}" alt="{{primary_author.name}}" loading="lazy" />
+                        {{/if}}
+                        <a href="{{primary_author.url}}">{{primary_author.name}}</a>
+                    </div>
+                {{/if}}
+                <time class="post-full-date" datetime="{{date format="YYYY-MM-DD"}}">
+                    {{date format="DD MMM YYYY"}}
+                </time>
+                <span class="post-full-reading-time">{{reading_time}}</span>
+            </div>
+        </div>
+    </header>
 
     {{#if feature_image}}
-        <img src="{{feature_image}}" style="width:100%; max-height:400px; object-fit:cover;">
+        <figure class="post-full-image">
+            <img src="{{feature_image}}" alt="{{title}}" loading="lazy" />
+        </figure>
     {{/if}}
 
-    <div class="post-content">
-        {{content}}
-    </div>
-</section>
+    <section class="post-full-content">
+        <div class="container post-content-body">
+            {{content}}
+        </div>
+    </section>
+
+    <footer class="post-full-footer">
+        <div class="container">
+            {{#if tags}}
+                <div class="post-full-tags">
+                    {{#foreach tags}}
+                        <a href="{{url}}" class="post-tag">{{name}}</a>
+                    {{/foreach}}
+                </div>
+            {{/if}}
+        </div>
+    </footer>
+</article>
+{{/post}}

@@ -1,4 +1,19 @@
 {
-  "name": "mytheme",
-  "version": "1.0.0"
+  "name": "dalai-lama-foundation",
+  "description": "Custom Ghost theme for the Dalai Lama Foundation",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Dalai Lama Foundation Dev Team",
+    "email": "dev@dalailamafoundation.org"
+  },
+  "config": {
+    "posts_per_page": 9,
+    "card_assets": true
+  },
+  "keywords": [
+    "ghost-theme",
+    "nonprofit",
+    "foundation"
+  ]
 }
