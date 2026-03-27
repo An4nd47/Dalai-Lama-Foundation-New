@@ -39,4 +39,25 @@
             }
         });
     }
+
+    // Stories Scroller Interactions
+    var scrollerInner = document.querySelector('.stories-scroller-inner');
+    var prevBtn = document.querySelector('.scroller-btn.prev');
+    var nextBtn = document.querySelector('.scroller-btn.next');
+
+    if (scrollerInner && prevBtn && nextBtn) {
+        var scrollAmount = 400; // Default fallback
+
+        nextBtn.addEventListener('click', function() {
+            var card = scrollerInner.querySelector('.story-card-inner');
+            var amount = card ? card.offsetWidth + 24 : scrollAmount;
+            scrollerInner.scrollBy({ left: amount, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', function() {
+            var card = scrollerInner.querySelector('.story-card-inner');
+            var amount = card ? card.offsetWidth + 24 : scrollAmount;
+            scrollerInner.scrollBy({ left: -amount, behavior: 'smooth' });
+        });
+    }
 })();

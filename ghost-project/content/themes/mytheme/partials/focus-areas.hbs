@@ -2,25 +2,19 @@
     <div class="container">
         <h2 class="section-title">Our Focus Areas</h2>
         
-        {{#get "tags" filter="visibility:public" limit="4" include="count.posts"}}
+        {{#get "tags" filter="visibility:public" limit="3" include="count.posts"}}
         <div class="focus-areas-grid">
             {{#foreach tags}}
-            <a href="{{url}}" class="focus-card">
-                <div class="focus-icon-wrap">
-                    {{#if feature_image}}
-                        <img src="{{img_url feature_image size="s"}}" alt="{{name}}" class="focus-icon">
-                    {{else}}
-                        <div class="focus-icon-placeholder"></div>
-                    {{/if}}
-                </div>
-                <h3 class="focus-title">{{name}}</h3>
+            <div class="focus-card-dark" {{#if feature_image}}style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('{{img_url feature_image size="m"}}')"{{/if}}>
+                <h3 class="focus-title-light">{{name}}</h3>
                 {{#if description}}
-                    <p class="focus-description">{{description}}</p>
+                    <p class="focus-description-light">{{description}}</p>
                 {{/if}}
-            </a>
+                <a href="{{url}}" class="btn btn-primary btn-rounded">LEARN MORE</a>
+            </div>
             {{else}}
                 <div class="placeholder-content">
-                    <p>Create tags in Ghost Admin to see focus areas here.</p>
+                    <p>Create at least one public tag in Ghost Admin to see focus areas here.</p>
                 </div>
             {{/foreach}}
         </div>

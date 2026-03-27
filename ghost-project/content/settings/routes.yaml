@@ -1,4 +1,8 @@
 routes:
+  /csr-partnership/: 
+    template: page
+  /our-work/:
+    template: page
 
 collections:
   /:
