@@ -29,14 +29,28 @@
         </div>
         {{/get}}
 
-        <div class="stories-featured-below">
-            <div class="featured-card-inner" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{@site.cover_image}}')"{{/if}}>
-                <div class="featured-card-content">
-                    <h2 class="featured-card-title">Partner With Us</h2>
-                    <p class="featured-card-text">Looking to create measurable CSR impact? Partner with us to uplift tribal and rural communities through sustainable initiatives.</p>
-                    <a href="/csr-partnership/" class="btn btn-primary">Become a Partner</a>
+        {{#get "pages" slug="partner-cta" limit="1"}}
+            {{#foreach pages}}
+                <div class="stories-featured-below">
+                    <div class="featured-card-inner" {{#if feature_image}}style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{img_url feature_image size="m"}}')"{{/if}}>
+                        <div class="featured-card-content">
+                            <h2 class="featured-card-title">{{title}}</h2>
+                            <p class="featured-card-text">{{excerpt words="20"}}</p>
+                            <a href="{{url}}" class="btn btn-primary">Become a Partner</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            {{else}}
+                <div class="stories-featured-below">
+                    <div class="featured-card-inner" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{@site.cover_image}}')"{{/if}}>
+                        <div class="featured-card-content">
+                            <h2 class="featured-card-title">Partner With Us</h2>
+                            <p class="featured-card-text">Looking to create measurable CSR impact? Partner with us to uplift tribal and rural communities through sustainable initiatives.</p>
+                            <a href="/csr-partnership/" class="btn btn-primary">Become a Partner</a>
+                        </div>
+                    </div>
+                </div>
+            {{/foreach}}
+        {{/get}}
     </div>
 </section>

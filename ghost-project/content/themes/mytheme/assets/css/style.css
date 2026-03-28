@@ -143,6 +143,40 @@ h1, h2, h3, h4, h5, h6 {
     flex-shrink: 0;
 }
 
+.nav-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-bg-alt);
+    padding: 8px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-left: 16px;
+    margin-right: auto;
+    flex: 0 1 400px;
+    transition: all var(--transition);
+    border: 1px solid var(--color-border);
+}
+
+.nav-search-wrap:hover {
+    background: #fff;
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-text);
+}
+
+.nav-search-icon {
+    display: flex;
+    color: var(--color-primary);
+}
+
+.nav-search-text {
+    font-weight: 500;
+}
+
 .site-logo {
     height: 44px;
     width: auto;
@@ -231,12 +265,24 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* =============================================
    HERO SECTION
    ============================================= */
 .hero-section {
     position: relative;
-    min-height: 520px;
+    min-height: 480px;
     background-color: var(--color-text);
     background-size: cover;
     background-position: center;
@@ -249,17 +295,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-content {
-    max-width: 750px;
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+
 
 .hero-heading {
     font-size: 44px;
     font-weight: 800;
     line-height: 1.15;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
     letter-spacing: -1px;
     color: #ffffff;
+}
+
+.hero-description {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
 }
 
 .hero-cta {
@@ -467,6 +530,64 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid var(--color-border-light);
     margin-bottom: 60px;
     text-align: center;
+}
+
+/* Data-style tables for aligned lists (Legal, Registration, etc.) */
+.post-content-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+}
+
+.post-content-body td {
+    border: none !important;
+    padding: 14px 0 !important;
+    vertical-align: middle;
+    font-size: 17px;
+    border-bottom: 1px solid var(--color-border-light) !important;
+}
+
+.post-content-body tr:last-child td {
+    border-bottom: none !important;
+}
+
+.post-content-body td:first-child {
+    width: 320px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    position: relative;
+    padding-left: 36px !important;
+}
+
+/* Premium Gold Dot for Table Rows */
+.post-content-body td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(220, 165, 74, 0.15);
+}
+
+.post-content-body td:last-child {
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .post-content-body td:first-child {
+        width: 180px;
+        padding-left: 28px !important;
+        font-size: 15px;
+    }
+    .post-content-body td:last-child {
+        font-size: 15px;
+    }
 }
 
 .post-full-title {
@@ -880,7 +1001,7 @@ h1, h2, h3, h4, h5, h6 {
 .site-footer {
     background: #141004;
     color: rgba(255, 255, 255, 0.7);
-    padding: 100px 0 0;
+    padding: 60px 0 0;
     font-size: 15px;
     border-top: 1px solid rgba(220, 165, 74, 0.1);
 }
@@ -1689,7 +1810,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Programs & Initiatives */
 .programs-section {
-    padding: 80px 0;
+    padding: 40px 0 60px;
 }
 
 .programs-grid {
@@ -1761,7 +1882,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Search Bar UI */
 .search-section {
-    padding: 40px 0;
+    padding: 24px 0;
 }
 
 .search-bar-wrap {
@@ -1803,7 +1924,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Stories Split */
 .stories-split-section {
-    padding: 80px 0;
+    padding: 60px 0 40px;
 }
 
 /* Stories Layout Restructure */

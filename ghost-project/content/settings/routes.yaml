@@ -1,5 +1,5 @@
 routes:
-  /csr-partnership/: 
+  /partner-cta/: 
     template: page
   /our-work/:
     template: page
