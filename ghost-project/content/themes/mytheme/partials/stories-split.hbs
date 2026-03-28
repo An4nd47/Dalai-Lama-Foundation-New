@@ -12,7 +12,7 @@
             </div>
         </div>
         
-        {{#get "posts" limit="6" include="tags,authors"}}
+        {{#get "posts" limit="6" filter="tag:-hash-site-stat" include="tags,authors"}}
         <div class="stories-scroller-outer">
             <div class="stories-scroller-inner">
                 {{#foreach posts}}

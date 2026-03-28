@@ -1,22 +1,36 @@
 <section class="stats-section">
     <div class="container">
+        {{#get "posts" filter="tag:hash-site-stat" limit="all" order="published_at asc"}}
         <div class="stats-grid">
+            {{#foreach posts}}
             <div class="stat-item">
-                <span class="stat-value">5000+</span>
-                <span class="stat-label">Lives Impacted</span>
+                <div class="stat-content">
+                    <span class="stat-value">{{title}}</span>
+                    <span class="stat-label">{{excerpt}}</span>
+                </div>
+            </div>
+            {{else}}
+            {{!-- Fallback if no stats found yet --}}
+            <div class="stat-item">
+                <div class="stat-content">
+                    <span class="stat-value">5000+</span>
+                    <span class="stat-label">Lives Impacted</span>
+                </div>
             </div>
             <div class="stat-item">
-                <span class="stat-value">1500+</span>
-                <span class="stat-label">Children Supported</span>
+                <div class="stat-content">
+                    <span class="stat-value">1500+</span>
+                    <span class="stat-label">Children Supported</span>
+                </div>
             </div>
             <div class="stat-item">
-                <span class="stat-value">800+</span>
-                <span class="stat-label">Women Empowered</span>
+                <div class="stat-content">
+                    <span class="stat-value">800+</span>
+                    <span class="stat-label">Women Empowered</span>
+                </div>
             </div>
-            <div class="stat-item">
-                <span class="stat-value">100,000+</span>
-                <span class="stat-label">Meals Served Annually</span>
-            </div>
+            {{/foreach}}
         </div>
+        {{/get}}
     </div>
 </section>
