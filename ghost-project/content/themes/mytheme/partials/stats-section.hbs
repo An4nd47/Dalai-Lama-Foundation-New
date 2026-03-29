@@ -1,6 +1,6 @@
 <section class="stats-section">
     <div class="container">
-        {{#get "posts" filter="tag:hash-site-stat" limit="all" order="published_at asc"}}
+        {{#get "posts" filter="tag:hash-site-stat" limit="100" order="published_at asc"}}
         <div class="stats-grid">
             {{#foreach posts}}
             <div class="stat-item">

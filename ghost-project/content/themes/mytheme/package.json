@@ -6,8 +6,13 @@
     "ghost": ">=5.0.0"
   },
   "config": {
-    "posts_per_page": 9
+    "posts_per_page": 9,
+    "card_assets": true
   },
+  "keywords": [
+    "ghost",
+    "ghost-theme"
+  ],
   "author": {
     "name": "Developer",
     "email": "hello@example.com"
