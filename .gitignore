@@ -1,5 +1,8 @@
 # Ghost runtime data
 ghost-project/content/data/
+ghost-project/content/images/
+ghost-project/content/media/
+ghost-project/content/files/
 ghost-project/content/logs/
 ghost-project/content-test/
 
