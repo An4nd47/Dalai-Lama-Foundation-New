@@ -1,7 +1,13 @@
 <section class="stories-split-section">
     <div class="container">
         <div class="stories-scroller-header">
-            <h2 class="section-title">Highlights</h2>
+            {{#get "pages" slug="section-highlights" limit="1"}}
+                {{#foreach pages}}
+                    <h2 class="section-title">{{title}}</h2>
+                {{/foreach}}
+            {{else}}
+                <h2 class="section-title">{{t "Highlights"}}</h2>
+            {{/get}}
             <div class="scroller-controls">
                 <button class="scroller-btn prev" aria-label="Previous">
                     <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -21,7 +27,7 @@
                         <span class="story-meta-light">{{tags limit="1"}}</span>
                         <h3 class="story-card-title">{{title}}</h3>
                         <p class="story-card-text">{{excerpt words="10"}}</p>
-                        <a href="{{url}}" class="btn btn-primary btn-rounded btn-small">READ MORE</a>
+                        <a href="{{url}}" class="btn btn-primary btn-rounded btn-small">{{t "Read More"}}</a>
                     </div>
                 </div>
                 {{/foreach}}
@@ -36,7 +42,7 @@
                         <div class="featured-card-content">
                             <h2 class="featured-card-title">{{title}}</h2>
                             <p class="featured-card-text">{{excerpt words="20"}}</p>
-                            <a href="{{url}}" class="btn btn-primary">Become a Partner</a>
+                            <a href="{{url}}" class="btn btn-primary">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{t "Partner With Us"}}{{/if}}</a>
                         </div>
                     </div>
                 </div>
@@ -44,9 +50,9 @@
                 <div class="stories-featured-below">
                     <div class="featured-card-inner" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{@site.cover_image}}')"{{/if}}>
                         <div class="featured-card-content">
-                            <h2 class="featured-card-title">Partner With Us</h2>
-                            <p class="featured-card-text">Looking to create measurable CSR impact? Partner with us to uplift tribal and rural communities through sustainable initiatives.</p>
-                            <a href="/csr-partnership/" class="btn btn-primary">Become a Partner</a>
+                            <h2 class="featured-card-title">{{@site.title}} {{t "Partnerships"}}</h2>
+                            <p class="featured-card-text">{{@site.description}}</p>
+                            <a href="{{@site.url}}" class="btn btn-primary">{{t "Partner With Us"}}</a>
                         </div>
                     </div>
                 </div>

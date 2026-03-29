@@ -2,14 +2,24 @@
 
 <section class="hero-section" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{@site.cover_image}}')"{{/if}}>
     <div class="hero-content">
-        <h1 class="hero-heading">Empowering Tribal & Rural Communities Through Education, Nutrition & Livelihoods</h1>
-        {{#if @site.description}}
-            <p class="hero-description">{{@site.description}}</p>
-        {{/if}}
-        <div class="hero-cta">
-            <a href="/partner-cta/" class="btn btn-primary">Partner With Us</a>
-            <a href="/our-work/" class="btn btn-secondary">Explore Our Work</a>
-        </div>
+        {{#get "pages" slug="home-hero" limit="1"}}
+            {{#foreach pages}}
+                <h1 class="hero-heading">{{title}}</h1>
+                {{#if custom_excerpt}}
+                    <p class="hero-description">{{custom_excerpt}}</p>
+                {{else if @site.description}}
+                    <p class="hero-description">{{@site.description}}</p>
+                {{/if}}
+            {{/foreach}}
+        {{else}}
+            <h1 class="hero-heading">{{@site.title}}</h1>
+            {{#if @site.description}}
+                <p class="hero-description">{{@site.description}}</p>
+            {{/if}}
+        {{/get}}
+        
+        {{navigation type="secondary"}}
+
         
         </div>
     </div>

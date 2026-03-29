@@ -29,31 +29,36 @@
         </div>
 
         <div class="footer-col">
-            <h4 class="footer-col-title">Navigation</h4>
+            <h4 class="footer-col-title">{{t "Navigation"}}</h4>
             {{navigation}}
         </div>
 
         <div class="footer-col col-contact">
-            <h4 class="footer-col-title">Contact Us</h4>
             {{#get "pages" slug="footer-contact-info" limit="1"}}
                 {{#foreach pages}}
+                    <h4 class="footer-col-title">{{title}}</h4>
                     <div class="footer-contact-content">
                         {{content}}
                     </div>
                 {{else}}
+                    <h4 class="footer-col-title">{{t "Contact Us"}}</h4>
                     <div class="footer-contact-content">
-                        <p>Plot No. 50, M.K. Nagar, Nandurbar</p>
-                        <p>foundationdalailama@gmail.com</p>
-                        <p>+91 7841918383</p>
+                        <p>{{@site.title}}</p>
                     </div>
                 {{/foreach}}
             {{/get}}
         </div>
 
         <div class="footer-col col-subscribe">
-            <h4 class="footer-col-title">Stay Updated</h4>
-            <p>Join our newsletter for the latest impact stories and updates.</p>
-            <a href="#/portal" class="btn btn-primary btn-rounded btn-small">Subscribe Now</a>
+            {{#get "pages" slug="footer-newsletter-info" limit="1"}}
+                {{#foreach pages}}
+                    <h4 class="footer-col-title">{{title}}</h4>
+                    <div class="newsletter-text">{{content}}</div>
+                    <a href="#/portal" class="btn btn-primary btn-rounded btn-small">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{t "Subscribe"}}{{/if}}</a>
+                {{else}}
+                    <h4 class="footer-col-title">{{@site.title}} {{t "Newsletter"}}</h4>
+                {{/foreach}}
+            {{/get}}
         </div>
     </div>
 
