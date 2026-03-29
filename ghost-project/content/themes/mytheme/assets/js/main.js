@@ -60,4 +60,25 @@
             scrollerInner.scrollBy({ left: -amount, behavior: 'smooth' });
         });
     }
+
+    // Programs Scroller Interactions
+    var progScrollerInner = document.querySelector('.programs-scroller-inner');
+    var progPrevBtn = document.querySelector('.scroller-btn.programs-prev');
+    var progNextBtn = document.querySelector('.scroller-btn.programs-next');
+
+    if (progScrollerInner && progPrevBtn && progNextBtn) {
+        var progScrollAmount = 350; // Default fallback
+
+        progNextBtn.addEventListener('click', function() {
+            var card = progScrollerInner.querySelector('.program-scroller-item');
+            var amount = card ? card.offsetWidth + 32 : progScrollAmount;
+            progScrollerInner.scrollBy({ left: amount, behavior: 'smooth' });
+        });
+
+        progPrevBtn.addEventListener('click', function() {
+            var card = progScrollerInner.querySelector('.program-scroller-item');
+            var amount = card ? card.offsetWidth + 32 : progScrollAmount;
+            progScrollerInner.scrollBy({ left: -amount, behavior: 'smooth' });
+        });
+    }
 })();

@@ -1,32 +1,49 @@
 <section class="programs-section">
     <div class="container">
-        <h2 class="section-title">Programs & Initiatives</h2>
-        
-        {{!-- Get posts tagged with #program --}}
-        {{#get "posts" filter="tag:hash-program" limit="3" include="tags,authors"}}
-        <div class="programs-grid">
-            {{#foreach posts}}
-                <article class="program-card">
-                    <a href="{{url}}" class="program-card-link">
-                        <div class="program-card-image-wrap">
-                            {{#if feature_image}}
-                                <img src="{{img_url feature_image size="m"}}" alt="{{title}}" class="program-card-image">
-                            {{else}}
-                                <div class="program-card-placeholder"></div>
-                            {{/if}}
-                        </div>
-                        <div class="program-card-content">
-                            <h3 class="program-card-title">{{title}}</h3>
-                            <p class="program-card-excerpt">{{excerpt words="15"}}...</p>
-                            <span class="program-card-more">Learn More <span class="arrow">&rarr;</span></span>
-                        </div>
-                    </a>
-                </article>
-            {{else}}
-                <div class="placeholder-content">
-                    <p>Tag posts with <code>#program</code> to showcase initiatives here.</p>
-                </div>
-            {{/foreach}}
+        <div class="stories-scroller-header">
+            <h2 class="section-title">Programs & Initiatives</h2>
+            <div class="scroller-controls">
+                <button class="scroller-btn programs-prev" aria-label="Previous">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <button class="scroller-btn programs-next" aria-label="Next">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+
+        {{#get "posts" filter="tag:hash-program" limit="6" include="tags,authors"}}
+        <div class="programs-scroller-outer">
+            <div class="programs-scroller-inner">
+                {{#foreach posts}}
+                    <article class="program-card-premium program-scroller-item">
+                        <a href="{{url}}" class="program-card-link">
+                            <div class="program-card-image-wrap">
+                                {{#if feature_image}}
+                                    <img src="{{img_url feature_image size="m"}}" alt="{{title}}" class="program-card-image">
+                                {{else}}
+                                    <div class="program-card-placeholder">
+                                        <span class="placeholder-icon">🌱</span>
+                                    </div>
+                                {{/if}}
+                                <div class="program-card-tag">{{#primary_tag}}{{name}}{{/primary_tag}}</div>
+                            </div>
+                            <div class="program-card-body">
+                                <h3 class="program-card-title">{{title}}</h3>
+                                <p class="program-card-excerpt">{{excerpt words="14"}}...</p>
+                                <div class="program-card-footer">
+                                    <span class="read-more-text">Explore Initiative <span class="arrow">&rarr;</span></span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                {{else}}
+                    <div class="programs-empty-state">
+                        <div class="empty-icon">📂</div>
+                        <p>No programs featured yet. Tag posts with <code>#program</code> to showcase them here.</p>
+                    </div>
+                {{/foreach}}
+            </div>
         </div>
         {{/get}}
     </div>
