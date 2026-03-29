@@ -5,8 +5,6 @@
                 {{#foreach pages}}
                     <h2 class="section-title">{{title}}</h2>
                 {{/foreach}}
-            {{else}}
-                <h2 class="section-title">{{t "Programs"}}</h2>
             {{/get}}
             <div class="scroller-controls">
                 <button class="scroller-btn programs-prev" aria-label="Previous">
@@ -43,11 +41,6 @@
                             </div>
                         </a>
                     </article>
-                {{else}}
-                    <div class="programs-empty-state">
-                        <div class="empty-icon">📂</div>
-                        <p>No programs featured yet. Tag posts with <code>#program</code> to showcase them here.</p>
-                    </div>
                 {{/foreach}}
             </div>
         </div>

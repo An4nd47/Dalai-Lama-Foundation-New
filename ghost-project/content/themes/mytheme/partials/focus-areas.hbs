@@ -4,8 +4,6 @@
             {{#foreach pages}}
                 <h2 class="section-title">{{title}}</h2>
             {{/foreach}}
-        {{else}}
-            <h2 class="section-title">{{t "Focus Areas"}}</h2>
         {{/get}}
         
         {{#get "tags" filter="visibility:public" limit="3" include="count.posts"}}
@@ -18,10 +16,6 @@
                 {{/if}}
                 <a href="{{url}}" class="btn btn-primary btn-rounded">{{t "Learn More"}}</a>
             </div>
-            {{else}}
-                <div class="placeholder-content">
-                    <p>Create at least one public tag in Ghost Admin to see focus areas here.</p>
-                </div>
             {{/foreach}}
         </div>
         {{/get}}

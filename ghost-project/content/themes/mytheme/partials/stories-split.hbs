@@ -5,8 +5,6 @@
                 {{#foreach pages}}
                     <h2 class="section-title">{{title}}</h2>
                 {{/foreach}}
-            {{else}}
-                <h2 class="section-title">{{t "Highlights"}}</h2>
             {{/get}}
             <div class="scroller-controls">
                 <button class="scroller-btn prev" aria-label="Previous">
@@ -43,16 +41,6 @@
                             <h2 class="featured-card-title">{{title}}</h2>
                             <p class="featured-card-text">{{excerpt words="20"}}</p>
                             <a href="{{url}}" class="btn btn-primary">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{t "Partner With Us"}}{{/if}}</a>
-                        </div>
-                    </div>
-                </div>
-            {{else}}
-                <div class="stories-featured-below">
-                    <div class="featured-card-inner" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{@site.cover_image}}')"{{/if}}>
-                        <div class="featured-card-content">
-                            <h2 class="featured-card-title">{{@site.title}} {{t "Partnerships"}}</h2>
-                            <p class="featured-card-text">{{@site.description}}</p>
-                            <a href="{{@site.url}}" class="btn btn-primary">{{t "Partner With Us"}}</a>
                         </div>
                     </div>
                 </div>

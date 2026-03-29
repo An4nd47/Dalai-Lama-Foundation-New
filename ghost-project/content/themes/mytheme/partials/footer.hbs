@@ -19,10 +19,6 @@
                         <div class="footer-social-page-content">
                             {{content}}
                         </div>
-                    {{else}}
-                        <div class="footer-social-placeholder">
-                            <p class="small opacity-60">Create a page with slug 'footer-social-links' to manage social icons.</p>
-                        </div>
                     {{/foreach}}
                 {{/get}}
             </div>
@@ -40,11 +36,6 @@
                     <div class="footer-contact-content">
                         {{content}}
                     </div>
-                {{else}}
-                    <h4 class="footer-col-title">{{t "Contact Us"}}</h4>
-                    <div class="footer-contact-content">
-                        <p>{{@site.title}}</p>
-                    </div>
                 {{/foreach}}
             {{/get}}
         </div>
@@ -55,8 +46,6 @@
                     <h4 class="footer-col-title">{{title}}</h4>
                     <div class="newsletter-text">{{content}}</div>
                     <a href="#/portal" class="btn btn-primary btn-rounded btn-small">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{t "Subscribe"}}{{/if}}</a>
-                {{else}}
-                    <h4 class="footer-col-title">{{@site.title}} {{t "Newsletter"}}</h4>
                 {{/foreach}}
             {{/get}}
         </div>
