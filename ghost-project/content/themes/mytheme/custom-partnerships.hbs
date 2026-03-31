@@ -1,0 +1,126 @@
+{{!< default}}
+
+{{#post}}
+<article class="partnerships-page-wrapper {{post_class}}">
+    
+    {{!-- Premium Parallax Hero --}}
+    <header class="partners-parallax-hero">
+        <div class="parallax-bg" style="background-image: url('{{asset "images/about-hero.jpg"}}');"></div>
+        <div class="partners-hero-overlay"></div>
+        <div class="container partners-hero-content reveal">
+            <span class="hero-label-gold">Strategic Collaboration</span>
+            <h1 class="partners-title-large">Co-Create Sustainable Change</h1>
+            <p class="partners-subtitle-large">Scaling impact through shared values, absolute transparency, and grassroots expertise.</p>
+        </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,149.3C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <div class="container partners-main">
+        
+        {{!-- Iconic Value Grid --}}
+        <section class="partnership-values-section reveal">
+            <div class="partners-value-grid">
+                <div class="value-card-premium">
+                    <div class="value-icon-box">🏗️</div>
+                    <div class="value-text-box">
+                        <h3>Grassroots Scale</h3>
+                        <p>Established on-the-ground presence in remote tribal regions for effective project delivery.</p>
+                    </div>
+                </div>
+                <div class="value-card-premium card-active">
+                    <div class="value-icon-box">💎</div>
+                    <div class="value-text-box">
+                        <h3>Pure Accountability</h3>
+                        <p>Real-time monitoring and third-party audited financial reports for every single rupee.</p>
+                    </div>
+                </div>
+                <div class="value-card-premium">
+                    <div class="value-icon-box">📈</div>
+                    <div class="value-text-box">
+                        <h3>Proven Metrics</h3>
+                        <p>Data-driven outcomes with measurable change in health, education, and livelihood.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Partnership Marquee (Even if placeholders, looks premium) --}}
+        <section class="partnership-marquee-section reveal reveal-left">
+            <h4 class="marquee-title">Trust & Collaboration</h4>
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <div class="marquee-item text-logo">Corporate Partners</div>
+                    <div class="marquee-item text-logo">Foundations</div>
+                    <div class="marquee-item text-logo">CSR Leaders</div>
+                    <div class="marquee-item text-logo">Social Tech</div>
+                    <div class="marquee-item text-logo">Government Org</div>
+                    <div class="marquee-item text-logo">Global Philanthropy</div>
+                    {{!-- Duplicated for smooth loop --}}
+                    <div class="marquee-item text-logo">Corporate Partners</div>
+                    <div class="marquee-item text-logo">Foundations</div>
+                    <div class="marquee-item text-logo">CSR Leaders</div>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Collaboration Block --}}
+        <section class="collaboration-types reveal">
+            <div class="collab-grid">
+                <div class="collab-info">
+                    <h2 class="section-title">Who can Partner with Us?</h2>
+                    <p class="section-text">Join a mission-driven ecosystem dedicated to serving humanity with efficiency and compassion.</p>
+                </div>
+                <div class="collab-list">
+                    <div class="collab-item">
+                        <div class="collab-num">01</div>
+                        <div class="collab-body">
+                            <strong>Corporate CSR</strong>
+                            <p>Full-lifecycle interventions with maximum social ROI and compliance.</p>
+                        </div>
+                    </div>
+                    <div class="collab-item">
+                        <div class="collab-num">02</div>
+                        <div class="collab-body">
+                            <strong>Global Foundations</strong>
+                            <p>Mission-aligned grants for specific sectoral impacts in remote regions.</p>
+                        </div>
+                    </div>
+                    <div class="collab-item">
+                        <div class="collab-num">03</div>
+                        <div class="collab-body">
+                            <strong>Public-Private Partnership</strong>
+                            <p>Collaborative models for large-scale infrastructure and health services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    {{!-- High-End CTA Section --}}
+    <section class="premium-cta-block reveal">
+        <div class="container text-center">
+            <div class="cta-glass-card">
+                <h2>Ready to Start a Collaboration?</h2>
+                <p>Reach out to our leadership team to discuss a strategic partnership for sustainable development.</p>
+                <div class="cta-actions">
+                    <a href="mailto:foundationdalailama@gmail.com" class="btn-premium-gold">Contact Leadership</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Original Page Content (for reference/editor content) --}}
+    <section class="original-content-section hidden">
+        <div class="container post-content-body">
+            {{content}}
+        </div>
+    </section>
+
+</article>
+{{/post}}

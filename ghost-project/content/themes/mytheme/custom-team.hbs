@@ -1,0 +1,73 @@
+{{!< default}}
+
+{{#post}}
+<article class="team-page-wrapper {{post_class}}">
+    
+    {{!-- Premium Hero Section --}}
+    <div class="team-hero">
+        <div class="container team-hero-content reveal">
+            <h1 class="team-title">Our Dedicated Team</h1>
+            <p class="team-subtitle">Passionate professionals and grassroots workers dedicated to the cause of humanity.</p>
+        </div>
+    </div>
+
+    <div class="container team-container">
+        
+        {{!-- Leadership Spotlight --}}
+        <section class="leadership-spotlight reveal">
+            <div class="spotlight-card">
+                <div class="leader-image">
+                    {{!-- <img src="{{asset "images/dalai-lama-portrait.png"}}" alt="Leadership Profile" class="leader-img-glow"> --}}
+                </div>
+                <div class="leader-bio">
+                    <div class="bio-label">Founder & Leadership</div>
+                    <h2>Shrikant Amrutsagar</h2>
+                    <p class="bio-short">Compassion in Action: Leading through service and accountability for the last 10 years.</p>
+                    <div class="bio-extended">
+                        <p>With a background in community development and a vision inspired by universal responsibility, Shrikant leads the Dalai Lama Foundation with a commitment to empowering the most marginalized sectors of society.</p>
+                        <ul class="bio-milestones">
+                            <li><strong>Vision:</strong> Holistic development for all.</li>
+                            <li><strong>Focus:</strong> Strategic partnerships and sustainability.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Team Structure Grid --}}
+        <section class="team-grid-section reveal">
+            <h2 class="section-title text-center">Our Core Structure</h2>
+            <div class="team-structure-grid">
+                <div class="team-member-card">
+                    <div class="member-icon">💼</div>
+                    <h4>Program Management</h4>
+                    <p>Program Director & Managers oversee execution and delivery of all grassroots programs.</p>
+                </div>
+                <div class="team-member-card">
+                    <div class="member-icon">📊</div>
+                    <h4>Monitoring & Evaluation</h4>
+                    <p>Expert M&E officers ensuring data-driven impact and transparency across all projects.</p>
+                </div>
+                <div class="team-member-card">
+                    <div class="member-icon">💰</div>
+                    <h4>Finance & Ops</h4>
+                    <p>Dedicated finance managers ensuring every rupee is used with maximum efficiency.</p>
+                </div>
+                <div class="team-member-card">
+                    <div class="member-icon">🚜</div>
+                    <h4>Field Coordinators</h4>
+                    <p>The heartbeat of our operations, working directly in tribal and rural regions.</p>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Original Page Content --}}
+        <section class="original-content-section reveal">
+            <div class="post-content-body">
+                {{content}}
+            </div>
+        </section>
+    </div>
+
+</article>
+{{/post}}

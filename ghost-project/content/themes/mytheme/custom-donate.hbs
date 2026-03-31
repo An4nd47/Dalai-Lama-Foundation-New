@@ -1,0 +1,129 @@
+{{!< default}}
+
+{{#post}}
+<article class="donate-page-wrapper {{post_class}}">
+    
+    {{!-- Premium Hero Section --}}
+    <header class="donate-hero" style="background-image: url('{{asset "images/donation_hero_bg.png"}}');">
+        <div class="donate-hero-overlay"></div>
+        <div class="container donate-hero-content reveal">
+            <h1 class="donate-title">{{title}}</h1>
+            <p class="donate-subtitle">Your generosity fuels our mission of compassion and peace. Join us in making a difference.</p>
+        </div>
+        
+        {{!-- Dynamic Wave Shape Divider --}}
+        <div class="section-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#ffffff" fill-opacity="1" d="M0,160L48,176.000C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,213.3C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <div class="container donate-container">
+        {{!-- Main Donation Content --}}
+        <div class="donate-grid">
+            
+            {{!-- Left Side: Foundation Message --}}
+            <div class="donate-message reveal reveal-left">
+                <div class="message-card">
+                    <span class="message-label">Impact of your gift</span>
+                    <h2 class="message-title">Every contribution creates a ripple of positive change</h2>
+                    <p class="message-text">
+                        The Dalai Lama Foundation is dedicated to promoting peace, compassion, and the preservation of Tibetan culture. Your donations go directly towards our core programs, including youth education, spiritual retreats, and community welfare projects.
+                    </p>
+                    
+                    <ul class="impact-list">
+                        <li>
+                            <div class="impact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3.33 3 6.67 3 10 0v-5"></path></svg></div>
+                            <div class="impact-content">
+                                <strong>Education</strong>
+                                <span>Scholarships for underprivileged students.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="impact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 00-7.65 0l-.77.78-.77-.78a5.4 5.4 0 00-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg></div>
+                            <div class="impact-content">
+                                <strong>Compassion</strong>
+                                <span>Food security and medical aid for those in need.</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="trust-badge-wrap">
+                        <div class="trust-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            <span>100% Secure & Tax-Deductible</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Right Side: DanaMojo Widget Box --}}
+            <div class="donate-box-wrap reveal reveal-right">
+                <div class="donate-box-glass">
+                    <div class="donate-box-header">
+                        <h3>Contribute Securely</h3>
+                        <p>Select your contribution amount below</p>
+                    </div>
+                    
+                    {{!-- DanaMojo Integration Area --}}
+                    <div class="danamojo-container">
+                        {{!-- 
+                            IMPORTANT FOR USER: 
+                            Please replace the placeholder below with the actual DanaMojo embed code 
+                            provided in your NGO dashboard.
+                        --}}
+                        <div class="danamojo-placeholder">
+                            <div class="placeholder-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                            </div>
+                            <h4>DanaMojo Widget Placeholder</h4>
+                            <p>To integrate DanaMojo, please paste your unique NGO embed code here in `page-donate.hbs`.</p>
+                            
+                            {{!-- Example/Placeholder Iframe (Replace with actual) --}}
+                            <div class="danamojo-mock">
+                                <img src="{{asset "images/danamojo_logo.png"}}" alt="Danamojo Logo" class="danamojo-logo-small">
+                                <span>Processing via DanaMojo secure gateway</span>
+                            </div>
+                        </div>
+                        
+                        {{!-- PLACE YOUR DANAMOJO CODE BELOW THIS LINE --}}
+                        
+                        {{!-- END OF DANAMOJO CODE --}}
+                    </div>
+
+                    <div class="donate-box-footer">
+                        <p>Powered by <strong>DanaMojo</strong> — Experience the magic of giving</p>
+                        <div class="payment-methods">
+                            <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa">
+                            <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="Mastercard">
+                            <img src="https://img.icons8.com/color/48/000000/upi.png" alt="UPI">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Secure Information Section --}}
+        <section class="secure-info reveal">
+            <div class="secure-info-content">
+                <div class="secure-item">
+                    <div class="secure-icon">🛡️</div>
+                    <div class="secure-text">
+                        <h4>End-to-End Encryption</h4>
+                        <p>Your sensitive data is protected using SSL encryption technology.</p>
+                    </div>
+                </div>
+                <div class="secure-item">
+                    <div class="secure-icon">📄</div>
+                    <div class="secure-text">
+                        <h4>Tax Benefits</h4>
+                        <p>Receive immediate 80G tax benefit certificate for your contributions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</article>
+{{/post}}

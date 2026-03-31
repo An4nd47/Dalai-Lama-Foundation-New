@@ -1,35 +1,50 @@
 {{!< default}}
 
-<section class="hero-section" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{@site.cover_image}}')"{{/if}}>
+<section class="hero-section" {{#if @site.cover_image}}style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{@site.cover_image}}')"{{/if}}>
     <div class="hero-content">
-        {{#get "pages" slug="home-hero" limit="1"}}
-            {{#foreach pages}}
-                <h1 class="hero-heading">{{title}}</h1>
-                {{#if custom_excerpt}}
-                    <p class="hero-description">{{custom_excerpt}}</p>
-                {{else if @site.description}}
+        <div class="hero-text">
+            {{#get "pages" slug="home-hero" limit="1"}}
+                {{#foreach pages}}
+                    <h1 class="hero-heading">{{title}}</h1>
+                    {{#if custom_excerpt}}
+                        <p class="hero-description">{{custom_excerpt}}</p>
+                    {{else if @site.description}}
+                        <p class="hero-description">{{@site.description}}</p>
+                    {{/if}}
+                {{/foreach}}
+            {{else}}
+                <h1 class="hero-heading">{{@site.title}}</h1>
+                {{#if @site.description}}
                     <p class="hero-description">{{@site.description}}</p>
                 {{/if}}
-            {{/foreach}}
-        {{else}}
-            <h1 class="hero-heading">{{@site.title}}</h1>
-            {{#if @site.description}}
-                <p class="hero-description">{{@site.description}}</p>
-            {{/if}}
-        {{/get}}
-        
-        {{navigation type="secondary"}}
+            {{/get}}
+            
+            {{navigation type="secondary"}}
+        </div>
 
-        
+        <div class="hero-portrait">
+            <img src="{{asset "images/dalai-lama-portrait.png"}}" alt="His Holiness the Dalai Lama" class="hero-portrait-img" loading="eager" />
         </div>
     </div>
 </section>
 
 {{> stats-section}}
 
+<div class="section-divider">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1350,30 1440,30 L1440,60 L0,60 Z" fill="#f7f5f2"/>
+    </svg>
+</div>
+
 {{> focus-areas}}
 
 {{> programs-grid}}
+
+<div class="section-divider">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path d="M0,30 C360,0 720,60 1080,30 C1260,15 1350,30 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
+    </svg>
+</div>
 
 {{> stories-split}}
 

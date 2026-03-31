@@ -1,0 +1,95 @@
+{{!< default}}
+
+{{#post}}
+<article class="impacts-page-wrapper {{post_class}}">
+    
+    {{!-- Premium Hero Section --}}
+    <header class="impact-hero" style="background-image: url('{{asset "images/impact-hero.jpg"}}');">
+        <div class="impact-hero-overlay"></div>
+        <div class="container impact-hero-content reveal">
+            <span class="hero-label">Real Results, Real Hope</span>
+            <h1 class="impact-title">{{title}}</h1>
+            <p class="impact-subtitle">Transparent impact measurement and stories of resilience from the heart of our communities.</p>
+        </div>
+        
+        <div class="section-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#ffffff" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,213.3C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <div class="container impact-container">
+        
+        {{!-- Stats Section Upgrade --}}
+        <section class="stats-premium-grid reveal">
+            <div class="stat-card-premium">
+                <div class="stat-inner">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-desc">Community Members Reached</span>
+                </div>
+            </div>
+            <div class="stat-card-premium">
+                <div class="stat-inner">
+                    <span class="stat-number">1500+</span>
+                    <span class="stat-desc">Children Supported</span>
+                </div>
+            </div>
+            <div class="stat-card-premium">
+                <div class="stat-inner">
+                    <span class="stat-number">800+</span>
+                    <span class="stat-desc">Women Empowered</span>
+                </div>
+            </div>
+            <div class="stat-card-premium">
+                <div class="stat-inner">
+                    <span class="stat-number">100,000+</span>
+                    <span class="stat-desc">Meals Served Annually</span>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Beneficiaries Masonry Highlights --}}
+        <section class="beneficiaries-premium reveal reveal-left">
+            <div class="beneficiary-grid">
+                <div class="beneficiary-image-large">
+                    <img src="{{asset "images/impact-1.jpg"}}" alt="Impact in the Community" class="premium-thumb">
+                    <div class="thumb-overlay">
+                        <h4>Community Health Drive</h4>
+                        <p>Providing essential healthcare to tribal regions.</p>
+                    </div>
+                </div>
+                <div class="beneficiary-list-wrap">
+                    <h2 class="section-title">Our Beneficiaries</h2>
+                    <ul class="premium-check-list">
+                        <li>
+                            <strong>Tribal Communities</strong>
+                            <span>Indigenous groups in remote Maharashtra.</span>
+                        </li>
+                        <li>
+                            <strong>Women & SHG Members</strong>
+                            <span>Self-help groups achieving financial independence.</span>
+                        </li>
+                        <li>
+                            <strong>Children</strong>
+                            <span>Youth in rural schools receiving education aid.</span>
+                        </li>
+                        <li>
+                            <strong>Marginalized Farmers</strong>
+                            <span>Sustainable agriculture support for small landholders.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Original Page Content --}}
+        <section class="original-content-section reveal">
+            <div class="post-content-body">
+                {{content}}
+            </div>
+        </section>
+    </div>
+
+</article>
+{{/post}}

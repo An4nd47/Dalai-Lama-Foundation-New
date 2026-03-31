@@ -3,9 +3,9 @@
         {{#get "posts" filter="tag:hash-site-stat" limit="100" order="published_at asc"}}
         <div class="stats-grid">
             {{#foreach posts}}
-            <div class="stat-item">
+            <div class="stat-item reveal">
                 <div class="stat-content">
-                    <span class="stat-value">{{title}}</span>
+                    <span class="stat-value" data-count="{{title}}">{{title}}</span>
                     <span class="stat-label">{{excerpt}}</span>
                 </div>
             </div>

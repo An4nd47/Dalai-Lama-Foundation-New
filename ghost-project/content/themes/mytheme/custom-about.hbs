@@ -1,0 +1,72 @@
+{{!< default}}
+
+{{#post}}
+<article class="about-page-wrapper {{post_class}}">
+    
+    {{!-- Premium Hero Section --}}
+    <header class="about-hero" style="background-image: url('{{asset "images/about-hero.jpg"}}');">
+        <div class="about-hero-overlay"></div>
+        <div class="container about-hero-content reveal">
+            <span class="hero-label">Compassion in Action</span>
+            <h1 class="about-title">{{title}}</h1>
+            <p class="about-subtitle">Dedicated to the holistic development of marginalized communities through the principles of peace and kindness.</p>
+        </div>
+        
+        <div class="section-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <div class="container about-container">
+        {{!-- Founder Section --}}
+        <section class="founder-section reveal">
+            <div class="founder-grid">
+                <div class="founder-image-wrap">
+                    <div class="portrait-glow"></div>
+                    <img src="{{asset "images/dalai-lama-portrait.png"}}" alt="His Holiness the Dalai Lama" class="floating-portrait">
+                    <div class="portrait-label">His Holiness the 14th Dalai Lama</div>
+                </div>
+                <div class="founder-text-wrap">
+                    <h2 class="section-title">Our Inspiration</h2>
+                    <p class="section-text">
+                        The Dalai Lama Foundation is inspired by the timeless wisdom and universal compassion of His Holiness the Dalai Lama. Our mission is to translate these spiritual values into practical, life-changing interventions for those who need it most.
+                    </p>
+                    <blockquote class="spiritual-quote">
+                        "The purpose of our lives is to be happy. Compassion is the source of all happiness."
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Mission & Vision Grid --}}
+        <section class="mission-vision-section reveal">
+            <div class="mission-grid">
+                <div class="mission-card-premium">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v12M6 12h12"></path></svg>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To empower marginalized communities through education, health, and sustainable livelihood programs rooted in the values of universal accountability.</p>
+                </div>
+                <div class="mission-card-premium">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>A world where every individual, regardless of their background, has the opportunity to thrive in a society built on the foundations of peace and justice.</p>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Original Page Content --}}
+        <section class="original-content-section reveal">
+            <div class="post-content-body">
+                {{content}}
+            </div>
+        </section>
+    </div>
+
+</article>
+{{/post}}
