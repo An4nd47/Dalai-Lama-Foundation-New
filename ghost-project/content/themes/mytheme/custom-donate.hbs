@@ -4,11 +4,11 @@
 <article class="donate-page-wrapper {{post_class}}">
     
     {{!-- Premium Hero Section --}}
-    <header class="donate-hero" style="background-image: url('{{asset "images/donation_hero_bg.png"}}');">
+    <header class="donate-hero" style="background-image: url('{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/donation_hero_bg.png"}}{{/if}}');">
         <div class="donate-hero-overlay"></div>
         <div class="container donate-hero-content reveal">
             <h1 class="donate-title">{{title}}</h1>
-            <p class="donate-subtitle">Your generosity fuels our mission of compassion and peace. Join us in making a difference.</p>
+            <p class="donate-subtitle">{{excerpt}}</p>
         </div>
         
         {{!-- Dynamic Wave Shape Divider --}}
@@ -26,33 +26,48 @@
             {{!-- Left Side: Foundation Message --}}
             <div class="donate-message reveal reveal-left">
                 <div class="message-card">
-                    <span class="message-label">Impact of your gift</span>
-                    <h2 class="message-title">Every contribution creates a ripple of positive change</h2>
-                    <p class="message-text">
-                        The Dalai Lama Foundation is dedicated to promoting peace, compassion, and the preservation of Tibetan culture. Your donations go directly towards our core programs, including youth education, spiritual retreats, and community welfare projects.
-                    </p>
+                    {{#get "pages" slug="donate-message" limit="1"}}
+                        {{#foreach pages}}
+                            <span class="message-label">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}Impact of your gift{{/if}}</span>
+                            <h2 class="message-title">{{title}}</h2>
+                            <div class="message-text">
+                                {{content}}
+                            </div>
+                        {{/foreach}}
+                    {{else}}
+                        <span class="message-label">Impact of your gift</span>
+                        <h2 class="message-title">Every contribution creates a ripple of positive change</h2>
+                        <p class="message-text">
+                            The Dalai Lama Foundation is dedicated to promoting peace, compassion, and the preservation of Tibetan culture. Your donations go directly towards our core programs, including youth education, spiritual retreats, and community welfare projects.
+                        </p>
+                    {{/get}}
                     
                     <ul class="impact-list">
-                        <li>
-                            <div class="impact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3.33 3 6.67 3 10 0v-5"></path></svg></div>
-                            <div class="impact-content">
-                                <strong>Education</strong>
-                                <span>Scholarships for underprivileged students.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="impact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 00-7.65 0l-.77.78-.77-.78a5.4 5.4 0 00-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg></div>
-                            <div class="impact-content">
-                                <strong>Compassion</strong>
-                                <span>Food security and medical aid for those in need.</span>
-                            </div>
-                        </li>
+                        {{#get "posts" filter="tag:hash-donate-impact" order="published_at asc" limit="4"}}
+                            {{#foreach posts}}
+                            <li>
+                                {{#if custom_excerpt}}
+                                <div class="impact-icon">{{{custom_excerpt}}}</div>
+                                {{/if}}
+                                <div class="impact-content">
+                                    <strong>{{title}}</strong>
+                                    <span>{{excerpt}}</span>
+                                </div>
+                            </li>
+                            {{/foreach}}
+                        {{/get}}
                     </ul>
 
                     <div class="trust-badge-wrap">
                         <div class="trust-badge">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                            <span>100% Secure & Tax-Deductible</span>
+                            {{#get "pages" slug="donate-trust-badge" limit="1"}}
+                                {{#foreach pages}}
+                                    <span>{{title}}</span>
+                                {{/foreach}}
+                            {{else}}
+                                <span>100% Secure & Tax-Deductible</span>
+                            {{/get}}
                         </div>
                     </div>
                 </div>
@@ -66,26 +81,21 @@
                         <p>Select your contribution amount below</p>
                     </div>
                     
-                    {{!-- DanaMojo Integration Area --}}
                     <div class="danamojo-container">
-                        {{!-- 
-                            IMPORTANT FOR USER: 
-                            Please replace the placeholder below with the actual DanaMojo embed code 
-                            provided in your NGO dashboard.
-                        --}}
-                        <div class="danamojo-placeholder">
-                            <div class="placeholder-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                            </div>                            
-                            {{!-- Example/Placeholder Iframe (Replace with actual) --}}
-                            <div class="danamojo-mock">
-                                <span>Processing via DanaMojo secure gateway</span>
+                        {{#if html}}
+                            <div class="danamojo-rendered">
+                                {{content}}
                             </div>
-                        </div>
-                        
-                        {{!-- PLACE YOUR DANAMOJO CODE BELOW THIS LINE --}}
-                        
-                        {{!-- END OF DANAMOJO CODE --}}
+                        {{else}}
+                            <div class="danamojo-placeholder">
+                                <div class="placeholder-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                                </div>                            
+                                <div class="danamojo-mock">
+                                    <span>Please paste your DanaMojo HTML widget inside the Ghost Page Editor for this page.</span>
+                                </div>
+                            </div>
+                        {{/if}}
                     </div>
 
                     <div class="donate-box-footer">
@@ -103,20 +113,32 @@
         {{!-- Secure Information Section --}}
         <section class="secure-info reveal">
             <div class="secure-info-content">
-                <div class="secure-item">
-                    <div class="secure-icon">🛡️</div>
-                    <div class="secure-text">
-                        <h4>End-to-End Encryption</h4>
-                        <p>Your sensitive data is protected using SSL encryption technology.</p>
+                {{#get "posts" filter="tag:hash-donate-secure-info" order="published_at asc" limit="2"}}
+                    {{#foreach posts}}
+                    <div class="secure-item">
+                        <div class="secure-icon">{{#if custom_excerpt}}{{{custom_excerpt}}}{{else}}🛡️{{/if}}</div>
+                        <div class="secure-text">
+                            <h4>{{title}}</h4>
+                            <p>{{excerpt}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="secure-item">
-                    <div class="secure-icon">📄</div>
-                    <div class="secure-text">
-                        <h4>Tax Benefits</h4>
-                        <p>Receive immediate 80G tax benefit certificate for your contributions.</p>
+                    {{/foreach}}
+                {{else}}
+                    <div class="secure-item">
+                        <div class="secure-icon">🛡️</div>
+                        <div class="secure-text">
+                            <h4>End-to-End Encryption</h4>
+                            <p>Your sensitive data is protected using SSL encryption technology.</p>
+                        </div>
                     </div>
-                </div>
+                    <div class="secure-item">
+                        <div class="secure-icon">📄</div>
+                        <div class="secure-text">
+                            <h4>Tax Benefits</h4>
+                            <p>Receive immediate 80G tax benefit certificate for your contributions.</p>
+                        </div>
+                    </div>
+                {{/get}}
             </div>
         </section>
     </div>

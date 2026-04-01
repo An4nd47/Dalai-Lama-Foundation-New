@@ -6,9 +6,9 @@
     {{!-- Premium Hero Section — Formal & Authoritative --}}
     <header class="report-hero">
         <div class="container report-hero-content reveal">
-            <span class="report-label">Transparency & Accountability</span>
+            <span class="report-label">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}Transparency & Accountability{{/if}}</span>
             <h1 class="report-title">{{title}}</h1>
-            <p class="report-subtitle">Access our annual performance and financial audits to see how every resource is used for the mission of compassion.</p>
+            <p class="report-subtitle">{{excerpt}}</p>
         </div>
     </header>
 
@@ -16,86 +16,88 @@
         
         {{!-- Featured Latest Report (2023-24) --}}
         <section class="latest-report-section reveal">
-            <div class="year-marker">Latest Report: 2023–24</div>
-            <div class="report-card-premium featured-report">
-                <div class="report-icon-box">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                </div>
-                <div class="report-info">
-                    <h3>Annual Report 2023–24</h3>
-                    <p>Financial Statement and Operational Highlights for the Year ending March 2024.</p>
-                    <div class="report-highlights-mini">
-                        <div class="h-stat"><strong>Total Income:</strong> </div>
-                        <div class="h-stat"><strong>Audit:</strong> Complete & Verified</div>
+            {{#get "pages" slug="reports-current-info" limit="1"}}
+                {{#foreach pages}}
+                    <div class="year-marker">{{title}}</div>
+                {{/foreach}}
+            {{/get}}
+
+            {{#get "posts" filter="tag:hash-report-current" order="published_at asc" limit="4"}}
+                {{#foreach posts}}
+                <div class="report-card-premium featured-report">
+                    <div class="report-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <div class="report-info">
+                        <h3>{{title}}</h3>
+                        <p>{{excerpt}}</p>
+                        {{#if custom_excerpt}}
+                        <div class="report-highlights-mini">
+                            <div class="h-stat"><strong>Status:</strong> {{custom_excerpt}}</div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="report-action">
+                        {{#if canonical_url}}
+                        <a href="{{canonical_url}}" class="btn-download-formal" target="_blank" rel="noopener">Download PDF</a>
+                        {{else}}
+                        <a href="#" class="btn-download-formal">Download PDF</a>
+                        {{/if}}
                     </div>
                 </div>
-                <div class="report-action">
-                    <a href="#" class="btn-download-formal">Download PDF <span class="file-size">(1.2 MB)</span></a>
-                </div>
-            </div>
-            <div class="report-card-premium featured-report">
-                <div class="report-icon-box">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                </div>
-                <div class="report-info">
-                    <h3>Audit Report 2023–24</h3>
-                    <p>Financial Statement and Operational Highlights for the Year ending March 2024.</p>
-                </div>
-                <div class="report-action">
-                    <a href="#" class="btn-download-formal">Download PDF <span class="file-size">(1.2 MB)</span></a>
-                </div>
-            </div>
+                {{/foreach}}
+            {{/get}}
             
-            <div class="year-highlights reveal">
-                <h4>2023–24 Key Highlights:</h4>
-                <ul class="formal-highlights">
-                    <li>Successful execution of <strong>government-supported projects</strong> across 15 districts.</li>
-                    <li>Continued focus on <strong>nutrition and community development</strong> programs for tribal regions.</li>
-                    <li>Scaling of <strong>women empowerment</strong> initiatives with a focus on self-reliance and entrepreneurship.</li>
-                </ul>
-            </div>
+            {{#get "pages" slug="reports-current-info" limit="1"}}
+                {{#foreach pages}}
+                <div class="year-highlights reveal">
+                    {{content}}
+                </div>
+                {{/foreach}}
+            {{/get}}
         </section>
 
-        {{!-- Historical Reports Archive (2022-23) --}}
+        {{!-- Historical Reports Archive --}}
         <section class="historical-reports-section reveal">
-            <div class="year-marker">Archive: 2022–23</div>
-            <div class="report-card-premium">
-                <div class="report-icon-box small">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                </div>
-                <div class="report-info">
-                    <h3>Annual Report 2022–23</h3>
-                    <p>Overview of community development and social impact through sustainable initiatives.</p>
-                    <div class="report-highlights-mini">
-                        <div class="h-stat"><strong>70,000+</strong> <span>Meals Served</span></div>
-                        <div class="h-stat"><strong>Audit:</strong> Verified</div>
+            {{#get "pages" slug="reports-archive-info" limit="1"}}
+                {{#foreach pages}}
+                    <div class="year-marker">{{title}}</div>
+                {{/foreach}}
+            {{/get}}
+            
+            {{#get "posts" filter="tag:hash-report-archive" order="published_at asc" limit="4"}}
+                {{#foreach posts}}
+                <div class="report-card-premium">
+                    <div class="report-icon-box small">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    </div>
+                    <div class="report-info">
+                        <h3>{{title}}</h3>
+                        <p>{{excerpt}}</p>
+                        {{#if custom_excerpt}}
+                        <div class="report-highlights-mini">
+                            <div class="h-stat"><strong>Status:</strong> {{custom_excerpt}}</div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="report-action">
+                        {{#if canonical_url}}
+                        <a href="{{canonical_url}}" class="btn-download-outline" target="_blank" rel="noopener">Download report</a>
+                        {{else}}
+                        <a href="#" class="btn-download-outline">Download report</a>
+                        {{/if}}
                     </div>
                 </div>
-                <div class="report-action">
-                    <a href="#" class="btn-download-outline">Download report <span class="file-size">(1 MB)</span></a>
-                </div>
-            </div>
-            <div class="report-card-premium">
-                <div class="report-icon-box small">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                </div>
-                <div class="report-info">
-                    <h3>Audit Report 2022–23</h3>
-                    <p>Overview of community development and social impact through sustainable initiatives.</p>
-                </div>
-                <div class="report-action">
-                    <a href="#" class="btn-download-outline">Download report <span class="file-size">(1 MB)</span></a>
-                </div>
-            </div>
+                {{/foreach}}
+            {{/get}}
 
-            <div class="year-highlights reveal">
-                <h4>2022–23 Achievements:</h4>
-                <p>The foundation continued its commitment through a range of community development and social impact initiatives.</p>
-                <ul class="formal-highlights small">
-                    <li>Conducted multiple <strong>health and awareness programs</strong> in rural and tribal Maharashtra.</li>
-                    <li>Successfully implemented various <strong>CSR-driven activities</strong> in collaboration with corporate partners.</li>
-                </ul>
-            </div>
+            {{#get "pages" slug="reports-archive-info" limit="1"}}
+                {{#foreach pages}}
+                <div class="year-highlights reveal">
+                    {{content}}
+                </div>
+                {{/foreach}}
+            {{/get}}
         </section>
 
         {{!-- Original Page Content (for reference/hidden) --}}

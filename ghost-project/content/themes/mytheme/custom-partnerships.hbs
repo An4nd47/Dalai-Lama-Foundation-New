@@ -5,12 +5,12 @@
     
     {{!-- Premium Parallax Hero --}}
     <header class="partners-parallax-hero">
-        <div class="parallax-bg" style="background-image: url('{{asset "images/about-hero.jpg"}}');"></div>
+        <div class="parallax-bg" style="background-image: url('{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/about-hero.jpg"}}{{/if}}');"></div>
         <div class="partners-hero-overlay"></div>
         <div class="container partners-hero-content reveal">
-            <span class="hero-label-gold">Strategic Collaboration</span>
-            <h1 class="partners-title-large">Co-Create Sustainable Change</h1>
-            <p class="partners-subtitle-large">Scaling impact through shared values, absolute transparency, and grassroots expertise.</p>
+            <span class="hero-label-gold">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}Strategic Collaboration{{/if}}</span>
+            <h1 class="partners-title-large">{{title}}</h1>
+            <p class="partners-subtitle-large">{{excerpt}}</p>
         </div>
         <div class="hero-wave">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -24,27 +24,19 @@
         {{!-- Iconic Value Grid --}}
         <section class="partnership-values-section reveal">
             <div class="partners-value-grid">
-                <div class="value-card-premium">
-                    <div class="value-icon-box">🏗️</div>
-                    <div class="value-text-box">
-                        <h3>Grassroots Scale</h3>
-                        <p>Established on-the-ground presence in remote tribal regions for effective project delivery.</p>
+                {{#get "posts" filter="tag:hash-partnership-value" order="published_at asc" limit="3"}}
+                    {{#foreach posts}}
+                    <div class="value-card-premium {{#if @first}}card-active{{/if}}">
+                        {{#if custom_excerpt}}
+                        <div class="value-icon-box">{{{custom_excerpt}}}</div>
+                        {{/if}}
+                        <div class="value-text-box">
+                            <h3>{{title}}</h3>
+                            <p>{{excerpt}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="value-card-premium card-active">
-                    <div class="value-icon-box">💎</div>
-                    <div class="value-text-box">
-                        <h3>Pure Accountability</h3>
-                        <p>Real-time monitoring and third-party audited financial reports for every single rupee.</p>
-                    </div>
-                </div>
-                <div class="value-card-premium">
-                    <div class="value-icon-box">📈</div>
-                    <div class="value-text-box">
-                        <h3>Proven Metrics</h3>
-                        <p>Data-driven outcomes with measurable change in health, education, and livelihood.</p>
-                    </div>
-                </div>
+                    {{/foreach}}
+                {{/get}}
             </div>
         </section>
 
@@ -53,16 +45,15 @@
             <h4 class="marquee-title">Trust & Collaboration</h4>
             <div class="marquee-container">
                 <div class="marquee-track">
-                    <div class="marquee-item text-logo">Corporate Partners</div>
-                    <div class="marquee-item text-logo">Foundations</div>
-                    <div class="marquee-item text-logo">CSR Leaders</div>
-                    <div class="marquee-item text-logo">Social Tech</div>
-                    <div class="marquee-item text-logo">Government Org</div>
-                    <div class="marquee-item text-logo">Global Philanthropy</div>
-                    {{!-- Duplicated for smooth loop --}}
-                    <div class="marquee-item text-logo">Corporate Partners</div>
-                    <div class="marquee-item text-logo">Foundations</div>
-                    <div class="marquee-item text-logo">CSR Leaders</div>
+                    {{#get "tags" filter="visibility:internal+slug:~^hash-partner-type" limit="10"}}
+                        {{#foreach tags}}
+                            <div class="marquee-item text-logo">{{description}}</div>
+                        {{/foreach}}
+                        {{!-- Duplicated for smooth loop --}}
+                        {{#foreach tags}}
+                            <div class="marquee-item text-logo">{{description}}</div>
+                        {{/foreach}}
+                    {{/get}}
                 </div>
             </div>
         </section>
@@ -71,31 +62,28 @@
         <section class="collaboration-types reveal">
             <div class="collab-grid">
                 <div class="collab-info">
-                    <h2 class="section-title">Who can Partner with Us?</h2>
-                    <p class="section-text">Join a mission-driven ecosystem dedicated to serving humanity with efficiency and compassion.</p>
+                    {{#get "pages" slug="partnership-collab-info" limit="1"}}
+                        {{#foreach pages}}
+                            <h2 class="section-title">{{title}}</h2>
+                            <p class="section-text">{{excerpt}}</p>
+                        {{/foreach}}
+                    {{else}}
+                        <h2 class="section-title">Who can Partner with Us?</h2>
+                        <p class="section-text">Join a mission-driven ecosystem dedicated to serving humanity with efficiency and compassion.</p>
+                    {{/get}}
                 </div>
                 <div class="collab-list">
-                    <div class="collab-item">
-                        <div class="collab-num">01</div>
-                        <div class="collab-body">
-                            <strong>Corporate CSR</strong>
-                            <p>Full-lifecycle interventions with maximum social ROI and compliance.</p>
+                    {{#get "posts" filter="tag:hash-collab-type" order="published_at asc" limit="5"}}
+                        {{#foreach posts}}
+                        <div class="collab-item">
+                            <div class="collab-num">0{{@number}}</div>
+                            <div class="collab-body">
+                                <strong>{{title}}</strong>
+                                <p>{{excerpt}}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="collab-item">
-                        <div class="collab-num">02</div>
-                        <div class="collab-body">
-                            <strong>Global Foundations</strong>
-                            <p>Mission-aligned grants for specific sectoral impacts in remote regions.</p>
-                        </div>
-                    </div>
-                    <div class="collab-item">
-                        <div class="collab-num">03</div>
-                        <div class="collab-body">
-                            <strong>Public-Private Partnership</strong>
-                            <p>Collaborative models for large-scale infrastructure and health services.</p>
-                        </div>
-                    </div>
+                        {{/foreach}}
+                    {{/get}}
                 </div>
             </div>
         </section>
@@ -105,13 +93,17 @@
     {{!-- High-End CTA Section --}}
     <section class="premium-cta-block reveal">
         <div class="container text-center">
-            <div class="cta-glass-card">
-                <h2>Ready to Start a Collaboration?</h2>
-                <p>Reach out to our leadership team to discuss a strategic partnership for sustainable development.</p>
-                <div class="cta-actions">
-                    <a href="mailto:foundationdalailama@gmail.com" class="btn-premium-gold">Contact Leadership</a>
+            {{#get "pages" slug="partnership-cta" limit="1"}}
+                {{#foreach pages}}
+                <div class="cta-glass-card">
+                    <h2>{{title}}</h2>
+                    <p>{{excerpt}}</p>
+                    <div class="cta-actions">
+                        <a href="{{#if custom_excerpt}}{{custom_excerpt}}{{else}}mailto:foundationdalailama@gmail.com{{/if}}" class="btn-premium-gold">Contact Leadership</a>
+                    </div>
                 </div>
-            </div>
+                {{/foreach}}
+            {{/get}}
         </div>
     </section>
 

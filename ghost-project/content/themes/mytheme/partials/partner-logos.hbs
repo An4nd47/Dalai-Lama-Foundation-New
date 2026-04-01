@@ -1,17 +1,17 @@
 <section class="partner-logos-section">
     <div class="container">
-        {{#get "tags" filter="slug:partner-logo" limit="6" include="feature_image"}}
+        {{#get "posts" filter="tag:hash-partner-logo" limit="10" order="published_at asc"}}
         <div class="partner-marquee-track">
             {{!-- First set of logos --}}
-            {{#foreach tags}}
+            {{#foreach posts}}
                 <div class="partner-logo">
-                    <img src="{{img_url feature_image}}" alt="{{name}}">
+                    <img src="{{img_url feature_image}}" alt="{{title}}">
                 </div>
             {{/foreach}}
             {{!-- Duplicate set for seamless infinite scroll --}}
-            {{#foreach tags}}
+            {{#foreach posts}}
                 <div class="partner-logo">
-                    <img src="{{img_url feature_image}}" alt="{{name}}">
+                    <img src="{{img_url feature_image}}" alt="{{title}}">
                 </div>
             {{/foreach}}
         </div>

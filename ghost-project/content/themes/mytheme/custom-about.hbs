@@ -4,12 +4,12 @@
 <article class="about-page-wrapper {{post_class}}">
     
     {{!-- Premium Hero Section --}}
-    <header class="about-hero" style="background-image: url('{{asset "images/about-hero.jpg"}}');">
+    <header class="about-hero" style="background-image: url('{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/about-hero.jpg"}}{{/if}}');">
         <div class="about-hero-overlay"></div>
         <div class="container about-hero-content reveal">
-            <span class="hero-label">Compassion in Action</span>
+            <span class="hero-label">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}Compassion in Action{{/if}}</span>
             <h1 class="about-title">{{title}}</h1>
-            <p class="about-subtitle">Dedicated to the holistic development of marginalized communities through the principles of peace and kindness.</p>
+            <p class="about-subtitle">{{excerpt}}</p>
         </div>
         
         <div class="section-divider">
@@ -22,41 +22,46 @@
     <div class="container about-container">
         {{!-- Founder Section --}}
         <section class="founder-section reveal">
-            <div class="founder-grid">
-                <div class="founder-image-wrap">
-                    <div class="portrait-glow"></div>
-                    <img src="{{asset "images/dalai-lama-portrait.png"}}" alt="His Holiness the Dalai Lama" class="floating-portrait">
-                    <div class="portrait-label">His Holiness the 14th Dalai Lama</div>
+            {{#get "pages" slug="founder-profile" limit="1"}}
+                {{#foreach pages}}
+                <div class="founder-grid">
+                    <div class="founder-image-wrap">
+                        <div class="portrait-glow"></div>
+                        <img src="{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/dalai-lama-portrait.png"}}{{/if}}" alt="{{title}}" class="floating-portrait">
+                        <div class="portrait-label">{{title}}</div>
+                    </div>
+                    <div class="founder-text-wrap">
+                        <h2 class="section-title">Our Inspiration</h2>
+                        <div class="section-text">
+                            {{content}}
+                        </div>
+                        {{#if custom_excerpt}}
+                        <blockquote class="spiritual-quote">
+                            "{{custom_excerpt}}"
+                        </blockquote>
+                        {{/if}}
+                    </div>
                 </div>
-                <div class="founder-text-wrap">
-                    <h2 class="section-title">Our Inspiration</h2>
-                    <p class="section-text">
-                        The Dalai Lama Foundation is inspired by the timeless wisdom and universal compassion of His Holiness the Dalai Lama. Our mission is to translate these spiritual values into practical, life-changing interventions for those who need it most.
-                    </p>
-                    <blockquote class="spiritual-quote">
-                        "The purpose of our lives is to be happy. Compassion is the source of all happiness."
-                    </blockquote>
-                </div>
-            </div>
+                {{/foreach}}
+            {{/get}}
         </section>
 
         {{!-- Mission & Vision Grid --}}
         <section class="mission-vision-section reveal">
             <div class="mission-grid">
-                <div class="mission-card-premium">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v12M6 12h12"></path></svg>
+                {{#get "posts" filter="tag:hash-mission-vision" order="published_at asc" limit="2"}}
+                    {{#foreach posts}}
+                    <div class="mission-card-premium">
+                        {{#if custom_excerpt}}
+                        <div class="card-icon">
+                            {{{custom_excerpt}}}
+                        </div>
+                        {{/if}}
+                        <h3>{{title}}</h3>
+                        <p>{{excerpt}}</p>
                     </div>
-                    <h3>Our Mission</h3>
-                    <p>To empower marginalized communities through education, health, and sustainable livelihood programs rooted in the values of universal accountability.</p>
-                </div>
-                <div class="mission-card-premium">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                    </div>
-                    <h3>Our Vision</h3>
-                    <p>A world where every individual, regardless of their background, has the opportunity to thrive in a society built on the foundations of peace and justice.</p>
-                </div>
+                    {{/foreach}}
+                {{/get}}
             </div>
         </section>
 
