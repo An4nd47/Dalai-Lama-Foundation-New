@@ -4,12 +4,12 @@
 <article class="impacts-page-wrapper {{post_class}}">
     
     {{!-- Premium Hero Section --}}
-    <header class="impact-hero" style="background-image: url('{{asset "images/impact-hero.jpg"}}');">
+    <header class="impact-hero" style="background-image: url('{{feature_image}}');">
         <div class="impact-hero-overlay"></div>
         <div class="container impact-hero-content reveal">
-            <span class="hero-label">Real Results, Real Hope</span>
+            {{#if primary_tag}}<span class="hero-label">{{primary_tag.name}}</span>{{/if}}
             <h1 class="impact-title">{{title}}</h1>
-            <p class="impact-subtitle">Transparent impact measurement and stories of resilience from the heart of our communities.</p>
+            <p class="impact-subtitle">{{custom_excerpt}}</p>
         </div>
         
         <div class="section-divider">
@@ -23,61 +23,50 @@
         
         {{!-- Stats Section Upgrade --}}
         <section class="stats-premium-grid reveal">
+            {{#get "posts" filter="tag:hash-impact-stat" order="published_at asc" limit="4"}}
+            {{#foreach posts}}
             <div class="stat-card-premium">
                 <div class="stat-inner">
-                    <span class="stat-number">5000+</span>
-                    <span class="stat-desc">Community Members Reached</span>
+                    <span class="stat-number">{{title}}</span>
+                    <span class="stat-desc">{{custom_excerpt}}</span>
                 </div>
             </div>
-            <div class="stat-card-premium">
-                <div class="stat-inner">
-                    <span class="stat-number">1500+</span>
-                    <span class="stat-desc">Children Supported</span>
-                </div>
-            </div>
-            <div class="stat-card-premium">
-                <div class="stat-inner">
-                    <span class="stat-number">800+</span>
-                    <span class="stat-desc">Women Empowered</span>
-                </div>
-            </div>
-            <div class="stat-card-premium">
-                <div class="stat-inner">
-                    <span class="stat-number">100,000+</span>
-                    <span class="stat-desc">Meals Served Annually</span>
-                </div>
-            </div>
+            {{/foreach}}
+            {{/get}}
         </section>
 
         {{!-- Beneficiaries Masonry Highlights --}}
         <section class="beneficiaries-premium reveal reveal-left">
             <div class="beneficiary-grid">
                 <div class="beneficiary-image-large">
-                    <img src="{{asset "images/impact-1.jpg"}}" alt="Impact in the Community" class="premium-thumb">
-                    <div class="thumb-overlay">
-                        <h4>Community Health Drive</h4>
-                        <p>Providing essential healthcare to tribal regions.</p>
-                    </div>
+                    {{#get "posts" filter="tag:hash-impact-beneficiary-image" limit="1"}}
+                    {{#foreach posts}}
+                        {{#if feature_image}}<img src="{{feature_image}}" alt="{{title}}" class="premium-thumb">{{/if}}
+                        <div class="thumb-overlay">
+                            <h4>{{title}}</h4>
+                            <p>{{custom_excerpt}}</p>
+                        </div>
+                    {{/foreach}}
+                    {{/get}}
                 </div>
                 <div class="beneficiary-list-wrap">
-                    <h2 class="section-title">Our Beneficiaries</h2>
+                    {{#get "posts" filter="tag:hash-impact-beneficiary-title" limit="1"}}
+                    {{#foreach posts}}
+                        <h2 class="section-title">{{title}}</h2>
+                    {{/foreach}}
+                    {{else}}
+                        <h2 class="section-title">Our Beneficiaries</h2>
+                    {{/get}}
+                    
                     <ul class="premium-check-list">
+                        {{#get "posts" filter="tag:hash-impact-beneficiary" order="published_at asc" limit="5"}}
+                        {{#foreach posts}}
                         <li>
-                            <strong>Tribal Communities</strong>
-                            <span>Indigenous groups in remote Maharashtra.</span>
+                            <strong>{{title}}</strong>
+                            <span>{{custom_excerpt}}</span>
                         </li>
-                        <li>
-                            <strong>Women & SHG Members</strong>
-                            <span>Self-help groups achieving financial independence.</span>
-                        </li>
-                        <li>
-                            <strong>Children</strong>
-                            <span>Youth in rural schools receiving education aid.</span>
-                        </li>
-                        <li>
-                            <strong>Marginalized Farmers</strong>
-                            <span>Sustainable agriculture support for small landholders.</span>
-                        </li>
+                        {{/foreach}}
+                        {{/get}}
                     </ul>
                 </div>
             </div>

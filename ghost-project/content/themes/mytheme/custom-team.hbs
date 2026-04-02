@@ -4,10 +4,11 @@
 <article class="team-page-wrapper {{post_class}}">
     
     {{!-- Premium Hero Section --}}
-    <div class="team-hero">
+    <div class="team-hero" {{#if feature_image}}style="background-image: url('{{feature_image}}'); background-size: cover; background-position: center;"{{/if}}>
         <div class="container team-hero-content reveal">
-            <h1 class="team-title">Our Dedicated Team</h1>
-            <p class="team-subtitle">Passionate professionals and grassroots workers dedicated to the cause of humanity.</p>
+            {{#if primary_tag}}<span class="hero-label-gold">{{primary_tag.name}}</span>{{/if}}
+            <h1 class="team-title">{{title}}</h1>
+            <p class="team-subtitle">{{custom_excerpt}}</p>
         </div>
     </div>
 
@@ -15,49 +16,47 @@
         
         {{!-- Leadership Spotlight --}}
         <section class="leadership-spotlight reveal">
+            {{#get "posts" filter="tag:hash-team-leader" limit="1"}}
+            {{#foreach posts}}
             <div class="spotlight-card">
                 <div class="leader-image">
-                    {{!-- <img src="{{asset "images/dalai-lama-portrait.png"}}" alt="Leadership Profile" class="leader-img-glow"> --}}
+                    {{#if feature_image}}<img src="{{feature_image}}" alt="{{title}}" class="leader-img-glow">{{/if}}
                 </div>
                 <div class="leader-bio">
-                    <div class="bio-label">Founder & Leadership</div>
-                    <h2>Shrikant Amrutsagar</h2>
-                    <p class="bio-short">Compassion in Action: Leading through service and accountability for the last 10 years.</p>
-                    <div class="bio-extended">
-                        <p>With a background in community development and a vision inspired by universal responsibility, Shrikant leads the Dalai Lama Foundation with a commitment to empowering the most marginalized sectors of society.</p>
-                        <ul class="bio-milestones">
-                            <li><strong>Vision:</strong> Holistic development for all.</li>
-                            <li><strong>Focus:</strong> Strategic partnerships and sustainability.</li>
-                        </ul>
+                    <div class="bio-label">{{#if primary_tag}}{{primary_tag.name}}{{else}}Founder & Leadership{{/if}}</div>
+                    <h2>{{title}}</h2>
+                    <p class="bio-short">{{custom_excerpt}}</p>
+                    <div class="bio-extended gh-content">
+                        {{content}}
                     </div>
                 </div>
             </div>
+            {{/foreach}}
+            {{/get}}
         </section>
 
         {{!-- Team Structure Grid --}}
         <section class="team-grid-section reveal">
+            {{#get "posts" filter="tag:hash-team-structure-title" limit="1"}}
+            {{#foreach posts}}
+            <h2 class="section-title text-center">{{title}}</h2>
+            {{/foreach}}
+            {{else}}
             <h2 class="section-title text-center">Our Core Structure</h2>
+            {{/get}}
+            
             <div class="team-structure-grid">
+                {{#get "posts" filter="tag:hash-team-member" order="published_at asc" limit="10"}}
+                {{#foreach posts}}
                 <div class="team-member-card">
-                    <div class="member-icon">💼</div>
-                    <h4>Program Management</h4>
-                    <p>Program Director & Managers oversee execution and delivery of all grassroots programs.</p>
+                    <div class="member-icon">
+                        {{#if feature_image}}<img src="{{feature_image}}" alt="{{title}}" style="width:32px; object-fit: contain;">{{else}}💼{{/if}}
+                    </div>
+                    <h4>{{title}}</h4>
+                    <p>{{custom_excerpt}}</p>
                 </div>
-                <div class="team-member-card">
-                    <div class="member-icon">📊</div>
-                    <h4>Monitoring & Evaluation</h4>
-                    <p>Expert M&E officers ensuring data-driven impact and transparency across all projects.</p>
-                </div>
-                <div class="team-member-card">
-                    <div class="member-icon">💰</div>
-                    <h4>Finance & Ops</h4>
-                    <p>Dedicated finance managers ensuring every rupee is used with maximum efficiency.</p>
-                </div>
-                <div class="team-member-card">
-                    <div class="member-icon">🚜</div>
-                    <h4>Field Coordinators</h4>
-                    <p>The heartbeat of our operations, working directly in tribal and rural regions.</p>
-                </div>
+                {{/foreach}}
+                {{/get}}
             </div>
         </section>
 

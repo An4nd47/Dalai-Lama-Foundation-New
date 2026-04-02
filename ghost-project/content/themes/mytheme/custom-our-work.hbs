@@ -4,93 +4,70 @@
 <article class="our-work-page-wrapper {{post_class}}">
     
     {{!-- Premium Hero Section --}}
-    <header class="work-hero-full">
+    <header class="work-hero-full" {{#if feature_image}}style="background-image: url('{{feature_image}}'); background-size: cover; background-position: center;"{{/if}}>
         <div class="container work-hero-content reveal">
-            <span class="hero-label">What We Do</span>
+            {{#if primary_tag}}<span class="hero-label">{{primary_tag.name}}</span>{{/if}}
             <h1 class="work-title">{{title}}</h1>
-            <p class="work-subtitle">We focus on holistic development through community empowerment and sustainable interventions.</p>
+            <p class="work-subtitle">{{custom_excerpt}}</p>
         </div>
     </header>
 
     {{!-- Alternating Focus Area Sections --}}
     <section class="focus-areas-alternating">
-        
-        {{!-- Education & Child Development --}}
-        <div class="work-project-block reveal">
+        {{#get "posts" filter="tag:hash-work-focus" order="published_at asc"}}
+        {{#foreach posts}}
+        <div class="work-project-block {{#if @odd}}block-reverse{{/if}} reveal">
             <div class="project-image-side">
-                <img src="{{asset "images/impact-hero.jpg"}}" alt="Education Program" class="project-img-parallax">
+                {{#if feature_image}}
+                <img src="{{feature_image}}" alt="{{title}}" class="project-img-parallax">
+                {{/if}}
             </div>
             <div class="project-content-side">
-                <div class="project-badge">Focus Area 01</div>
-                <h2>Education & Child Development</h2>
-                <p>Providing access to quality education, learning materials, and school support for children in remote tribal regions.</p>
-                <div class="project-stats-mini">
-                    <div class="mini-stat"><strong>1500+</strong> <span>Children</span></div>
-                    <div class="mini-stat"><strong>25</strong> <span>Schools</span></div>
+                {{#if primary_tag}}<div class="project-badge">{{primary_tag.name}}</div>{{/if}}
+                <h2>{{title}}</h2>
+                <p>{{custom_excerpt}}</p>
+                <div class="project-stats-mini gh-content">
+                    {{content}}
                 </div>
             </div>
         </div>
-
-        {{!-- Health & Nutrition --}}
-        <div class="work-project-block block-reverse reveal">
-            <div class="project-image-side">
-                <img src="{{asset "images/about-hero.jpg"}}" alt="Health Program" class="project-img-parallax">
-            </div>
-            <div class="project-content-side">
-                <div class="project-badge">Focus Area 02</div>
-                <h2>Health & Nutrition</h2>
-                <p>Ensuring food security and primary healthcare access through mobile clinics and supplementary nutrition programs.</p>
-                <div class="project-stats-mini">
-                    <div class="mini-stat"><strong>5000+</strong> <span>Beneficiaries</span></div>
-                    <div class="mini-stat"><strong>10</strong> <span>Clinics</span></div>
-                </div>
-            </div>
-        </div>
-
-        {{!-- Women Empowerment --}}
-        <div class="work-project-block reveal">
-            <div class="project-image-side">
-                <img src="{{asset "images/impact-1.jpg"}}" alt="Women Empowerment" class="project-img-parallax">
-            </div>
-            <div class="project-content-side">
-                <div class="project-badge">Focus Area 03</div>
-                <h2>Women Empowerment</h2>
-                <p>Supporting Self-Help Groups (SHGs) through financial literacy, skill-building, and micro-entrepreneurship opportunities.</p>
-                <div class="project-stats-mini">
-                    <div class="mini-stat"><strong>800+</strong> <span>SHG Members</span></div>
-                    <div class="mini-stat"><strong>100%</strong> <span>Independence</span></div>
-                </div>
-            </div>
-        </div>
-
+        {{/foreach}}
+        {{/get}}
     </section>
 
     {{!-- Approach Cards --}}
     <section class="approach-section reveal">
         <div class="container text-center">
-            <h2 class="section-title">Our Unique Approach</h2>
+            {{#get "posts" filter="tag:hash-work-approach-title" limit="1"}}
+                {{#foreach posts}}
+                    <h2 class="section-title">{{title}}</h2>
+                {{/foreach}}
+            {{else}}
+                <h2 class="section-title">Our Unique Approach</h2>
+            {{/get}}
+            
             <div class="approach-grid">
-                <div class="approach-card-tilted">
-                    <div class="approach-icon">🤝</div>
-                    <h4>Community First</h4>
-                    <p>We work with community members, not just for them, ensuring ownership and long-term sustainability.</p>
+                {{#get "posts" filter="tag:hash-work-approach" order="published_at asc" limit="3"}}
+                {{#foreach posts}}
+                <div class="approach-card-tilted {{#has number="2"}}card-primary{{/has}}">
+                    <div class="approach-icon">
+                        {{#if feature_image}}
+                            <img src="{{feature_image}}" alt="{{title}}" style="width: 40px; height: 40px; object-fit: contain;">
+                        {{else}}
+                            ⭐
+                        {{/if}}
+                    </div>
+                    <h4>{{title}}</h4>
+                    <p>{{custom_excerpt}}</p>
                 </div>
-                <div class="approach-card-tilted card-primary">
-                    <div class="approach-icon">🌍</div>
-                    <h4>Holistic Strategy</h4>
-                    <p>We address the root causes of poverty through interconnected interventions in health, education, and livelihood.</p>
-                </div>
-                <div class="approach-card-tilted">
-                    <div class="approach-icon">📊</div>
-                    <h4>Data-Driven Impact</h4>
-                    <p>Every program is monitored and evaluated against rigorous impact metrics to ensure maximum accountability.</p>
-                </div>
+                {{/foreach}}
+                {{/get}}
             </div>
         </div>
     </section>
 
-    {{!-- Original Content (Hidden but accessible if needed) --}}
-    <section class="original-content-section hidden">
+    {{!-- Original Content (Accessible) --}}
+    <section class="original-content-section reveal">
         <div class="container post-content-body">
             {{content}}
         </div>
@@ -98,3 +75,4 @@
 
 </article>
 {{/post}}
+

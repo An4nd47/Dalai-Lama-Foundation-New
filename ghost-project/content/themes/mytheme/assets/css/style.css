@@ -3559,7 +3559,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
-   PREMIUM — ABOUT PAGE STYLES
+   PREMIUM ï¿½ ABOUT PAGE STYLES
    ============================================= */
 
 .about-hero {
@@ -3719,7 +3719,7 @@ h1, h2, h3, h4, h5, h6 {
 .mission-card-premium p { font-size: 17px; color: var(--color-text-secondary); line-height: 1.7; }
 
 /* =============================================
-   PREMIUM — IMPACTS PAGE STYLES
+   PREMIUM ï¿½ IMPACTS PAGE STYLES
    ============================================= */
 
 .impact-hero {
@@ -3891,7 +3891,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
-   PREMIUM — OUR WORK PAGE STYLES
+   PREMIUM ï¿½ OUR WORK PAGE STYLES
    ============================================= */
 
 .work-hero-full {
@@ -3955,7 +3955,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
-   PREMIUM — TEAM PAGE STYLES
+   PREMIUM ï¿½ TEAM PAGE STYLES
    ============================================= */
 
 .team-hero { padding: 120px 0 60px; text-align: center; }
@@ -3978,7 +3978,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .bio-milestones { list-style: none; padding: 0; margin-top: 30px; }
 .bio-milestones li { margin-bottom: 15px; position: relative; padding-left: 25px; }
-.bio-milestones li::before { content: '•'; position: absolute; left: 0; color: var(--color-primary); font-size: 24px; line-height: 1; }
+.bio-milestones li::before { content: 'ï¿½'; position: absolute; left: 0; color: var(--color-primary); font-size: 24px; line-height: 1; }
 
 .team-structure-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 60px;
@@ -3993,7 +3993,7 @@ h1, h2, h3, h4, h5, h6 {
 .member-icon { font-size: 40px; margin-bottom: 20px; background: var(--color-bg-warm); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto; }
 
 /* =============================================
-   PREMIUM — PARTNERSHIPS PAGE STYLES
+   PREMIUM ï¿½ PARTNERSHIPS PAGE STYLES
    ============================================= */
 
 .partners-hero { padding: 120px 0; text-align: center; background: #fafafa; }
@@ -4036,7 +4036,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
-   SUPER-PREMIUM — PARTNERSHIPS PAGE STYLES (ELEVATED)
+   SUPER-PREMIUM ï¿½ PARTNERSHIPS PAGE STYLES (ELEVATED)
    ============================================= */
 
 .partners-parallax-hero {
@@ -4138,7 +4138,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
-   PREMIUM — ANNUAL REPORT PAGE STYLES
+   PREMIUM ï¿½ ANNUAL REPORT PAGE STYLES
    ============================================= */
 
 .report-hero {
