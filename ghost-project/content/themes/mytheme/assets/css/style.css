@@ -227,7 +227,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* PREMIUM — DONATE CTA BUTTON */
-.site-nav .nav-donate-us a {
+.site-nav .nav-donate-us a,
+.site-nav .nav-donate a {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: #ffffff !important;
     padding: 10px 24px;
@@ -239,7 +240,8 @@ h1, h2, h3, h4, h5, h6 {
     animation: breatheDonate 4s infinite ease-in-out;
 }
 
-.site-nav .nav-donate-us a:hover {
+.site-nav .nav-donate-us a:hover,
+.site-nav .nav-donate a:hover {
     transform: scale(1.08) translateY(-2px);
     box-shadow: 0 8px 25px rgba(220, 165, 74, 0.5);
     background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
@@ -3330,7 +3332,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
     margin-bottom: 20px;
     letter-spacing: -2px;
-    color:#B68633;
+    color: white;
 }
 
 .donate-subtitle {
@@ -3501,11 +3503,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .secure-info-content {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
 }
 
-.secure-item { display: flex; gap: 24px; }
-.secure-icon { font-size: 40px; }
+.secure-item { display: flex; gap: 20px; align-items: flex-start; }
+.secure-icon { 
+    flex-shrink: 0; 
+    width: 64px; 
+    height: 64px; 
+    background: var(--color-bg-warm); 
+    border-radius: 16px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
 .secure-text h4 { font-size: 22px; margin-bottom: 12px; font-weight: 700; }
 .secure-text p { font-size: 16px; color: var(--color-text-secondary); line-height: 1.6; }
 
@@ -4222,4 +4235,141 @@ h1, h2, h3, h4, h5, h6 {
     .report-highlights-mini { justify-content: center; flex-wrap: wrap; }
     .year-highlights { padding-left: 0; }
     .report-title { font-size: 40px; }
+}
+
+/* === BUTTON FIX === */
+.featured-card-content .btn,
+.story-card-content .btn {
+    position: relative !important;
+    z-index: 100 !important;
+    opacity: 1 !important;
+    background: #e6a836 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+    border: none !important;
+    filter: none !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+    mix-blend-mode: normal !important;
+}
+
+/* === SCROLLER CLIPPING FIX === */
+.stories-scroller-outer { overflow: visible !important; }
+.stories-scroller-inner {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    margin-top: -24px !important;
+    margin-bottom: -10px !important;
+}
+
+/* === BANK DETAILS DYNAMIC LIST STYLING === */
+.bank-details-glass {
+    min-height: auto !important; /* Removes the stretched empty feel */
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(220, 165, 74, 0.05) 100%) !important;
+    border: 1px solid rgba(220, 165, 74, 0.2) !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.05), inset 0 0 20px rgba(220, 165, 74, 0.05) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add a subtle shine animation to the bank card */
+.bank-details-glass::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; right: 0; bottom: 0;
+    width: 50%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+    transform: skewX(-20deg);
+    animation: shine-sweep 6s infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes shine-sweep {
+    0% { left: -100%; }
+    20% { left: 200%; }
+    100% { left: 200%; }
+}
+
+.bank-details-premium {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+.bank-dynamic-content ul {
+    list-style: none;
+    padding: 20px 0 0 0;
+    margin: 0;
+    max-width: 100%;
+}
+.bank-dynamic-content li {
+    padding: 16px 12px;
+    border-bottom: 1px dashed rgba(220, 165, 74, 0.3);
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.bank-dynamic-content li:hover {
+    background: rgba(220, 165, 74, 0.08);
+    border-radius: 8px;
+    transform: translateX(5px);
+}
+.bank-dynamic-content li:last-child {
+    border-bottom: none;
+}
+.bank-dynamic-content li strong {
+    display: inline-block;
+    width: 150px;
+    color: var(--color-primary-dark);
+    font-family: var(--font-heading);
+    font-weight: 800;
+}
+
+/* === PREMIUM TRUST BADGES === */
+/* Fixed icon stretching and improved mobile spacing */
+.secure-item { align-items: flex-start !important; }
+.secure-icon {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    background: #fdf6e7 !important; /* Soft premium gold-white */
+    border: 1px solid rgba(182, 134, 51, 0.1) !important;
+}
+
+.secure-icon svg {
+    color: var(--color-primary-dark) !important;
+    width: 28px !important;
+    height: 28px !important;
+}
+
+/* Responsive adjustments for the new 3-column layout and bank details */
+@media (max-width: 991px) {
+    .secure-info-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .secure-info-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .bank-dynamic-content li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    .bank-dynamic-content li strong { width: 100%; }
 }

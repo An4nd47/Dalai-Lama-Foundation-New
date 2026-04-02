@@ -16,7 +16,7 @@
             </div>
         </div>
         
-        {{#get "posts" limit="6" filter="tag:-hash-site-stat+tag:-hash-program" include="tags,authors"}}
+        {{#get "posts" limit="6" filter="tag:hash-highlight" include="tags,authors"}}
         <div class="stories-scroller-outer">
             <div class="stories-scroller-inner">
                 {{#foreach posts}}
@@ -40,7 +40,7 @@
                         <div class="featured-card-content">
                             <h2 class="featured-card-title">{{title}}</h2>
                             <p class="featured-card-text">{{excerpt words="20"}}</p>
-                            <a href="{{url}}" class="btn btn-primary">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{t "Partner With Us"}}{{/if}}</a>
+                            <a href="{{url}}" class="btn btn-primary">{{t "Learn More"}}</a>
                         </div>
                     </div>
                 </div>
